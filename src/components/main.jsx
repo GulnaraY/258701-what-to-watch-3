@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Main = (props) => {
+  // eslint-disable-next-line react/prop-types
   const {title, genre, release} = props;
   return (
     <React.Fragment>
