@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Гульнара Якупова](https://up.htmlacademy.ru/react/3/user/258701).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Антонов](https://up.htmlacademy.ru/react/3/user/3162).
 
 ---
 
