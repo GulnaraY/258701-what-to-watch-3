@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import App from './components/app.jsx';
+import App from './components/app/app.jsx';
 
 const PromoMovieDetails = {
   TITLE: `The Grand Budapest Hotel`,
@@ -9,11 +9,14 @@ const PromoMovieDetails = {
   RELEASE: 2014,
 };
 
+const moviesList = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
+
 ReactDom.render(
     <App
       title = {PromoMovieDetails.TITLE}
       genre = {PromoMovieDetails.GENRE}
       release = {PromoMovieDetails.RELEASE}
+      movies = {moviesList}
     />,
     document.querySelector(`#root`)
 );
