@@ -21,7 +21,7 @@ App.propTypes = {
   genre: PropTypes.string.isRequired,
   release: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(
-    PropTypes.string.isRequired
+      PropTypes.string.isRequired
   ),
 };
 

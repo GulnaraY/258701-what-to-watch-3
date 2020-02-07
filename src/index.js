@@ -20,4 +20,3 @@ ReactDom.render(
     />,
     document.querySelector(`#root`)
 );
-
