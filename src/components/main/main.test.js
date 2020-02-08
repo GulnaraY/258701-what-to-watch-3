@@ -11,13 +11,14 @@ const PromoMovieDetails = {
 const moviesList = [`Friends`, `Revolutionary Road`, `Joy`];
 
 it(`render Main`, () => {
-  const tree = rerendergit 
+  const tree = rerender
     .create(
         <Main
           title={PromoMovieDetails.TITLE}
           genre={PromoMovieDetails.GENRE}
           release={PromoMovieDetails.RELEASE}
           movies={moviesList}
+          onTitleClick={() => {}}
         />)
       .toJSON();
 

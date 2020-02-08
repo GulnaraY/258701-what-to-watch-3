@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Main = (props) => {
 
-  const {title, genre, release, movies} = props;
+  const {title, genre, release, movies, onTitleClick} = props;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -112,7 +112,11 @@ const Main = (props) => {
                   height="175"/>
               </div>
               <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
+                <a
+                  onClick = {onTitleClick}
+                  className="small-movie-card__link"
+                  href="movie-page.html">{movie}
+                </a>
               </h3>
             </article>)}
           </div>
@@ -146,6 +150,7 @@ Main.propTypes = {
   release: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.string.isRequired),
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;
