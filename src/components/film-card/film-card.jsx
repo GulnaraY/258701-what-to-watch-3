@@ -9,6 +9,11 @@ class FilmCard extends PureComponent {
       activeElement: null,
     };
   }
+  _hoverHandler(id) {
+    this.setState({
+      activeElement: id,
+    });
+  }
 
   render() {
     const {filmInfo, onTitleClick, onCardHover} = this.props;
@@ -16,9 +21,7 @@ class FilmCard extends PureComponent {
     return (
       <article className="small-movie-card catalog__movies-card"
         onMouseOver={() => {
-          this.setState({
-            activeElement: id,
-          });
+          this._hoverHandler(id);
           onCardHover(id);
         }}
       >
