@@ -4,15 +4,6 @@ import PropTypes from 'prop-types';
 class FilmCard extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeElement: null,
-    };
-  }
-  _hoverHandler(id) {
-    this.setState({
-      activeElement: id,
-    });
   }
 
   render() {
@@ -21,7 +12,6 @@ class FilmCard extends PureComponent {
     return (
       <article className="small-movie-card catalog__movies-card"
         onMouseOver={() => {
-          this._hoverHandler(id);
           onCardHover(id);
         }}
       >
