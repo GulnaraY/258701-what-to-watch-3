@@ -8,7 +8,13 @@ const PromoMovieDetails = {
   RELEASE: 2004,
 };
 
-const moviesList = [`Friends`, `Revolutionary Road`, `Joy`];
+const titles = [`One`, `Two`, `Tree`, `Four`, `Five`, `Six`, `Seven`, `Eight`];
+
+const moviesList = new Array(8).fill(``).map((film, index) => ({
+  title: titles[index],
+  picture: titles[index] + `jpg`,
+  id: index + Date.now(),
+}));
 
 it(`render Main`, () => {
   const tree = rerender
@@ -19,6 +25,7 @@ it(`render Main`, () => {
           release={PromoMovieDetails.RELEASE}
           movies={moviesList}
           onTitleClick={() => {}}
+          onCardHover={() => {}}
         />)
       .toJSON();
 
