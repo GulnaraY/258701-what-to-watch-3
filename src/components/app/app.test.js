@@ -16,6 +16,18 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   id: index + Date.now(),
 }));
 
+const filmDetails = {
+  title: `Summer`,
+  genre: `drame`,
+  release: 1999,
+  poster: `summer.jpg`,
+  picture: `summer.jpg`,
+  rating: 8,
+  ratingAmount: 200,
+  description: `One day in sumemer`,
+  director: `Tim Cook`,
+  actors: [`actress`, `actor`],
+};
 
 it(`render App`, () => {
   const tree = rerender
@@ -25,6 +37,7 @@ it(`render App`, () => {
           genre={PromoMovieDetails.GENRE}
           release={PromoMovieDetails.RELEASE}
           movies={moviesList}
+          filmDetails={filmDetails}
         />)
       .toJSON();
 
