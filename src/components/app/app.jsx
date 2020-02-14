@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import FilmDetails from '../film-details/film-details.jsx';
 
 const titleClickHandler = () => {};
 const handleCardHover = (filmId) => {
@@ -12,7 +14,7 @@ class App extends PureComponent {
     super(props);
   }
 
-  render() {
+  _renderHomePage() {
     const {title, genre, release, movies} = this.props;
 
     return (
@@ -24,6 +26,21 @@ class App extends PureComponent {
         onTitleClick = {titleClickHandler}
         onCardHover = {handleCardHover}
       />
+    );
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderHomePage()}
+          </Route>
+          <Route exact path="/dev-film">
+            <FilmDetails/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
