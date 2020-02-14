@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Main from './main.jsx';
 
@@ -9,7 +9,13 @@ const PromoMovieDetails = {
   RELEASE: 2004,
 };
 
-const moviesList = [`Friends`, `Revolutionary Road`, `Joy`];
+const titles = [`One`, `Two`, `Tree`, `Four`, `Five`, `Six`, `Seven`, `Eight`];
+
+const moviesList = new Array(8).fill(``).map((film, index) => ({
+  title: titles[index],
+  picture: titles[index] + `jpg`,
+  id: index + Date.now(),
+}));
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -18,13 +24,14 @@ Enzyme.configure({
 it(`Should title be pressed`, () => {
   const onTitleClick = jest.fn();
 
-  const main = shallow(
+  const main = mount(
       <Main
         title={PromoMovieDetails.TITLE}
         genre={PromoMovieDetails.GENRE}
         release={PromoMovieDetails.RELEASE}
         movies={moviesList}
         onTitleClick={onTitleClick}
+        onCardHover={()=>{}}
       />
   );
 
