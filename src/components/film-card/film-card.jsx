@@ -15,7 +15,11 @@ class FilmCard extends PureComponent {
           onCardHover(id);
         }}
       >
-        <div className="small-movie-card__image">
+        <div className="small-movie-card__image"
+          onClick = {() => {
+            onTitleClick(id);
+          }}
+        >
           <img
             src={`img/${picture}`}
             alt={title}
@@ -25,7 +29,10 @@ class FilmCard extends PureComponent {
         </div>
         <h3 className="small-movie-card__title">
           <a
-            onClick = {onTitleClick}
+            onClick = {(evt) => {
+              evt.preventDefault();
+              onTitleClick(id);
+            }}
             className="small-movie-card__link"
             href="movie-page.html">{title}
           </a>
