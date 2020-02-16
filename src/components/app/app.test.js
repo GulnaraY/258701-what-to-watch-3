@@ -14,16 +14,23 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   title: titles[index],
   picture: titles[index] + `jpg`,
   id: index + Date.now(),
+  genre: `drama`,
+  release: 1999,
+  poster: `summer.jpg`,
+  rating: 8,
+  ratingAmount: 200,
+  description: `One day in sumemer`,
+  director: `Tim Cook`,
+  actors: [`actress`, `actor`],
 }));
-
 
 it(`render App`, () => {
   const tree = rerender
     .create(
         <App
-          title={PromoMovieDetails.TITLE}
-          genre={PromoMovieDetails.GENRE}
-          release={PromoMovieDetails.RELEASE}
+          promoTitle={PromoMovieDetails.TITLE}
+          promoGenre={PromoMovieDetails.GENRE}
+          promoRelease={PromoMovieDetails.RELEASE}
           movies={moviesList}
         />)
       .toJSON();

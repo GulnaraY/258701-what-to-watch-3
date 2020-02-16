@@ -12,9 +12,9 @@ const PromoMovieDetails = {
 
 ReactDom.render(
     <App
-      title = {PromoMovieDetails.TITLE}
-      genre = {PromoMovieDetails.GENRE}
-      release = {PromoMovieDetails.RELEASE}
+      promoTitle = {PromoMovieDetails.TITLE}
+      promoGenre = {PromoMovieDetails.GENRE}
+      promoRelease = {PromoMovieDetails.RELEASE}
       movies = {films}
     />,
     document.querySelector(`#root`)

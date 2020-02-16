@@ -10,6 +10,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="One"
@@ -36,6 +37,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Two"
@@ -62,6 +64,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Tree"
@@ -88,6 +91,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Four"
@@ -114,6 +118,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Five"
@@ -140,6 +145,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Six"
@@ -166,6 +172,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Seven"
@@ -192,6 +199,7 @@ exports[`Should films list be rendered 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="Eight"

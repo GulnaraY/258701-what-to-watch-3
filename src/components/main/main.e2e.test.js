@@ -37,7 +37,7 @@ it(`Should title be pressed`, () => {
 
   const titleLink = main.find(`a.small-movie-card__link`);
 
-  titleLink.forEach((title) => title.props().onClick());
+  titleLink.forEach((title) => title.simulate(`click`, {preventDefault() {}}));
 
   expect(onTitleClick.mock.calls.length).toBe(moviesList.length);
 });
