@@ -8,9 +8,9 @@ class VideoPlayer extends PureComponent {
     this.state = {
       process: null,
       isLoading: true,
-      isPlaying: true,
+      isPlaying: props.isPlaying,
       isAutoplay: true,
-      isMute: true,
+      isMute: props.isMute,
     };
   }
   componentDidMount() {
@@ -42,13 +42,13 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {src, poster, onVideoUnHover} = this.props;
+    const {src, poster, onVideoUnhover} = this.props;
     const video = <video
       width ={270} height ={175}
       autoPlay={this.state.isAutoplay}
       muted={this.state.isMute}
       poster={`img/${poster}`}
-      onMouseOut={onVideoUnHover}
+      onMouseOut={onVideoUnhover}
     >
       <source src = {src} type="video/mp4" />
     </video>;
@@ -56,11 +56,21 @@ class VideoPlayer extends PureComponent {
     return video;
   }
 
+  componentDidUpdate() {
+    if (this.state.isPlaying) {
+      this._video.play();
+    } else {
+      this._video.pause();
+    }
+  }
+
 }
 
 VideoPlayer.propTypes = {
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
-  onVideoUnHover: PropTypes.func.isRequired,
+  onVideoUnhover: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  isMute: PropTypes.bool.isRequired,
 };
 export default VideoPlayer;

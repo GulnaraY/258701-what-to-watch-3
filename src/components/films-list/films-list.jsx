@@ -49,7 +49,9 @@ class FilmsList extends PureComponent {
               key= {index + movie}
               src={movie.video}
               poster={movie.picture}
-              onVideoUnHover={() => {
+              isPlaying={true}
+              isMute={true}
+              onVideoUnhover={() => {
                 this._handleVideoUnhover();
               }}
             />

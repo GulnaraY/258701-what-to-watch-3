@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render VideoPlayer 1`] = `
+<video
+  autoPlay={true}
+  height={175}
+  muted={true}
+  onMouseOut={[Function]}
+  poster="img/poster"
+  width={270}
+>
+  <source
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+    type="video/mp4"
+  />
+</video>
+`;
