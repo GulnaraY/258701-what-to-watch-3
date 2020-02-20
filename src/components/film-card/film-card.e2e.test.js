@@ -21,6 +21,7 @@ it(`Should be hovered`, () => {
         filmInfo={movie}
         onTitleClick={()=>{}}
         onCardHover={onCardHover}
+        onCardUnhover={()=>{}}
       />
   );
   filmCard.props().onMouseOver();

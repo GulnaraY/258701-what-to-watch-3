@@ -15,6 +15,7 @@ it(`Should FilmCard be rendered correctly`, () => {
         filmInfo={movie}
         onTitleClick={()=>{}}
         onCardHover={()=>{}}
+        onCardUnhover={()=>{}}
       />
   ).toJSON();
 
