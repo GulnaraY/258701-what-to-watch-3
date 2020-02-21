@@ -1,40 +1,47 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import VideoPlayer from './video-player.jsx';
+import FilmCard from '../film-card/film-card.jsx';
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const src = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
-const poster = `poster`;
+const movie = {
+  title: `Summer`,
+  picture: `summer.jpg`,
+  id: Date.now(),
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+};
 
-describe(`Play and pause should be realized`, () => {
-  it(`VideoPlayer should play video`, () => {
-    const videoPlayer = shallow(
-        <VideoPlayer
-          src={src}
-          poster={poster}
-          onVideoUnhover={()=>{}}
-          isPlaying={true}
-          isMute={true}
+describe(`Should VideoPlayer play and pause`, () => {
+  it(`Should VideoPlayer pause`, () => {
+    const filmCard = shallow(
+        <FilmCard
+          filmInfo={movie}
+          onTitleClick={()=>{}}
+          onCardHover={()=>{}}
         />
     );
 
-    expect(videoPlayer.state().isPlaying).toEqual(true);
+    const movieCard = filmCard.find(`.small-movie-card`);
+    movieCard.simulate(`mouseLeave`);
+
+    expect(filmCard.state(`isVideoPlaying`)).toEqual(false);
   });
-  it(`VideoPlayer should pause video`, () => {
-    const videoPlayer = shallow(
-        <VideoPlayer
-          src={src}
-          poster={poster}
-          onVideoUnhover={()=>{}}
-          isPlaying={false}
-          isMute={true}
+
+  it(`Should VideoPlayer play`, () => {
+    const filmCard = shallow(
+        <FilmCard
+          filmInfo={movie}
+          onTitleClick={()=>{}}
+          onCardHover={()=>{}}
         />
     );
 
-    expect(videoPlayer.state().isPlaying).toEqual(false);
+    const movieCard = filmCard.find(`.small-movie-card`);
+    movieCard.simulate(`mouseEnter`);
+
+    expect(filmCard.state(`isVideoPlaying`)).toEqual(true);
   });
 });

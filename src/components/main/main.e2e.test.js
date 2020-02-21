@@ -15,6 +15,7 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   title: titles[index],
   picture: titles[index] + `jpg`,
   id: index + Date.now(),
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 }));
 
 Enzyme.configure({

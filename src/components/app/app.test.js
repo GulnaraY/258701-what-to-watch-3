@@ -22,6 +22,7 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 }));
 
 it(`render App`, () => {
@@ -32,7 +33,11 @@ it(`render App`, () => {
           promoGenre={PromoMovieDetails.GENRE}
           promoRelease={PromoMovieDetails.RELEASE}
           movies={moviesList}
-        />)
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
       .toJSON();
 
   expect(tree).toMatchSnapshot();

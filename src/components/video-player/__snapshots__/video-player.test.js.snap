@@ -2,10 +2,8 @@
 
 exports[`Should render VideoPlayer 1`] = `
 <video
-  autoPlay={true}
   height={175}
   muted={true}
-  onMouseOut={[Function]}
   poster="img/poster"
   width={270}
 >

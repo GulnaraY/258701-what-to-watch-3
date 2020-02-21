@@ -9,10 +9,12 @@ it(`Should render VideoPlayer`, () => {
       <VideoPlayer
         src={src}
         poster={poster}
-        onVideoUnhover={()=>{}}
-        isMute={true}
         isPlaying={true}
-      />
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -7,6 +7,7 @@ const movie = {
   title: `Summer`,
   picture: `summer.jpg`,
   id: Date.now(),
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 };
 
 Enzyme.configure({
@@ -21,7 +22,6 @@ it(`Should be hovered`, () => {
         filmInfo={movie}
         onTitleClick={()=>{}}
         onCardHover={onCardHover}
-        onCardUnhover={()=>{}}
       />
   );
   filmCard.props().onMouseOver();

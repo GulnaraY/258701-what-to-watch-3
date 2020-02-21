@@ -259,19 +259,25 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="One"
-              height="175"
-              src="img/Onejpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Onejpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -287,19 +293,25 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Two"
-              height="175"
-              src="img/Twojpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Twojpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -315,19 +327,25 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Tree"
-              height="175"
-              src="img/Treejpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Treejpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -343,19 +361,25 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Four"
-              height="175"
-              src="img/Fourjpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Fourjpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -371,19 +395,25 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Five"
-              height="175"
-              src="img/Fivejpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Fivejpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -399,19 +429,25 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Six"
-              height="175"
-              src="img/Sixjpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Sixjpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -427,19 +463,25 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Seven"
-              height="175"
-              src="img/Sevenjpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Sevenjpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -455,19 +497,25 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOut={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
             onClick={[Function]}
           >
-            <img
-              alt="Eight"
-              height="175"
-              src="img/Eightjpg"
-              width="280"
-            />
+            <video
+              height={175}
+              muted={true}
+              poster="img/Eightjpg"
+              width={270}
+            >
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4"
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"

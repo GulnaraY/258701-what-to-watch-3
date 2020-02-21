@@ -3,19 +3,25 @@
 exports[`Should FilmCard be rendered correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseOut={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
     onClick={[Function]}
   >
-    <img
-      alt="Summer"
-      height="175"
-      src="img/summer.jpg"
-      width="280"
-    />
+    <video
+      height={175}
+      muted={true}
+      poster="img/summer.jpg"
+      width={270}
+    >
+      <source
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        type="video/mp4"
+      />
+    </video>
   </div>
   <h3
     className="small-movie-card__title"

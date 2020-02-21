@@ -1,66 +1,70 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
-    this._video = null;
+
+    this._videoRef = createRef();
+
     this.state = {
       process: null,
       isLoading: true,
       isPlaying: props.isPlaying,
-      isAutoplay: true,
-      isMute: props.isMute,
+      isMute: true,
     };
   }
   componentDidMount() {
+    const video = this._videoRef.current;
 
-    this._video.oncanplaythrough = () => this.setState({
+    video.oncanplaythrough = () => this.setState({
       isLoading: false,
     });
 
-    this._video.onplay = () => this.setState({
+    video.onplay = () => this.setState({
       isPlaying: true,
     });
 
-    this._video.onpause = () => this.setState({
+    video.onpause = () => this.setState({
       isPlaying: false,
     });
 
-    this._video.ontimeupdate = () => this.setState({
-      progress: this._audio.currentTime,
+    video.ontimeupdate = () => this.setState({
+      progress: video.currentTime,
     });
   }
 
   componentWillUnmount() {
-    this._video.oncanplaythrough = null;
-    this._video.onplay = null;
-    this._video.onpause = null;
-    this._video.ontimeupdate = null;
-    this._video.src = null;
-    this._video = null;
+    const video = this._videoRef.current;
+
+    video.oncanplaythrough = null;
+    video.onplay = null;
+    video.onpause = null;
+    video.ontimeupdate = null;
+    video.src = ``;
   }
 
   render() {
-    const {src, poster, onVideoUnhover} = this.props;
+    const {src, poster} = this.props;
     const video = <video
       width ={270} height ={175}
-      autoPlay={this.state.isAutoplay}
       muted={this.state.isMute}
       poster={`img/${poster}`}
-      onMouseOut={onVideoUnhover}
+      ref={this._videoRef}
     >
       <source src = {src} type="video/mp4" />
     </video>;
-    this._video = document.createElement(`video`);
+
     return video;
   }
 
   componentDidUpdate() {
-    if (this.state.isPlaying) {
-      this._video.play();
+    const video = this._videoRef.current;
+
+    if (this.props.isPlaying) {
+      video.play();
     } else {
-      this._video.pause();
+      video.load();
     }
   }
 
@@ -69,8 +73,6 @@ class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
-  onVideoUnhover: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  isMute: PropTypes.bool.isRequired,
 };
 export default VideoPlayer;

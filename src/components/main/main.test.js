@@ -14,6 +14,7 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   title: titles[index],
   picture: titles[index] + `jpg`,
   id: index + Date.now(),
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 }));
 
 it(`render Main`, () => {
@@ -26,7 +27,11 @@ it(`render Main`, () => {
           movies={moviesList}
           onTitleClick={() => {}}
           onCardHover={() => {}}
-        />)
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
       .toJSON();
 
   expect(tree).toMatchSnapshot();
