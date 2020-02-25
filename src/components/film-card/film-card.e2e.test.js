@@ -55,7 +55,10 @@ describe(`Should VideoPlayer play and pause`, () => {
     );
 
     const movieCard = filmCard.find(`.small-movie-card`);
+    jest.useFakeTimers();
     movieCard.simulate(`mouseEnter`);
+    jest.advanceTimersByTime(1001);
+    filmCard.update();
 
     expect(filmCard.state(`isVideoPlaying`)).toEqual(true);
   });
