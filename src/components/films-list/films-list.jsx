@@ -7,19 +7,13 @@ class FilmsList extends PureComponent {
     super(props);
 
     this.state = {
-      activeElement: null,
+      activeIndex: null,
+      hoverTimeOut: null,
     };
-  }
-
-  _hoverHandler(id) {
-    this.setState({
-      activeElement: id,
-    });
   }
 
   render() {
     const {movies, onTitleClick, onCardHover} = this.props;
-
     return (
       <div className="catalog__movies-list">
         {movies.map((movie, index) =>
@@ -28,7 +22,6 @@ class FilmsList extends PureComponent {
             filmInfo={movie}
             onTitleClick={onTitleClick}
             onCardHover={(activeId)=>{
-              this._hoverHandler(activeId);
               onCardHover(activeId);
             }}
           />

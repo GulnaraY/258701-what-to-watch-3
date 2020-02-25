@@ -6,6 +6,7 @@ const movie = {
   title: `Summer`,
   picture: `summer.jpg`,
   id: Date.now(),
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 };
 
 it(`Should FilmCard be rendered correctly`, () => {
@@ -15,7 +16,11 @@ it(`Should FilmCard be rendered correctly`, () => {
         filmInfo={movie}
         onTitleClick={()=>{}}
         onCardHover={()=>{}}
-      />
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
