@@ -49,7 +49,8 @@ class App extends PureComponent {
     if (movies[step]) {
       const movie = movies[step];
       const {title, genre, release, poster, picture} = movie;
-      const {rating, ratingAmount, description, director, actors} = movie;
+      const {rating, ratingAmount, description, director, actors, runTime} = movie;
+      const {reviews} = movie;
       return (
         <FilmDetails
           title={title}
@@ -62,6 +63,8 @@ class App extends PureComponent {
           description={description}
           director={director}
           actors={actors}
+          runTime={runTime}
+          reviews={reviews}
         />
       );
     }
@@ -72,7 +75,8 @@ class App extends PureComponent {
   _renderDetailsPage() {
     const {movies} = this.props;
     const {title, genre, release, poster, picture} = movies[0];
-    const {rating, ratingAmount, description, director, actors} = movies[0];
+    const {rating, ratingAmount, description, director, actors, runTime} = movies[0];
+    const {reviews} = movies[0];
     return (
       <FilmDetails
         title={title}
@@ -85,6 +89,8 @@ class App extends PureComponent {
         description={description}
         director={director}
         actors={actors}
+        runTime={runTime}
+        reviews={reviews}
       />
     );
   }
@@ -122,6 +128,15 @@ App.propTypes = {
         description: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
         actors: PropTypes.arrayOf(PropTypes.string.isRequired),
+        runTime: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              text: PropTypes.string.isRequired,
+              author: PropTypes.string.isRequired,
+              dateTime: PropTypes.string.isRequired,
+              rating: PropTypes.number.isRequired,
+            })
+        ),
       })),
 };
 

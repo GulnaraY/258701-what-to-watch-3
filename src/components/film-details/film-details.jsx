@@ -1,33 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const RatingMap = {
-  BAD: `Bad`,
-  NORMAL: `Normal`,
-  GOOD: `Good`,
-  VERY_GOOD: `Very good`,
-  AWESOME: `Awesome`,
-};
-
-const getFilmsMark = (rating) => {
-  if (rating <= 3) {
-    return RatingMap.BAD;
-  } else if (rating <= 5) {
-    return RatingMap.NORMAL;
-  } else if (rating <= 8) {
-    return RatingMap.GOOD;
-  } else if (rating < 10) {
-    return RatingMap.VERY_GOOD;
-  } else if (rating === 10) {
-    return RatingMap.AWESOME;
-  }
-
-  return null;
-};
+import Tabs from '../tabs/tabs.jsx';
 
 const FilmDetails = (props) => {
   const {title, genre, release, poster, picture} = props;
-  const {rating, ratingAmount, description, director, actors} = props;
+  const {rating, ratingAmount, description, director, actors, runTime} = props;
+  const {reviews} = props;
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -86,40 +64,17 @@ const FilmDetails = (props) => {
             <div className="movie-card__poster movie-card__poster--big">
               <img src={`img/${picture}`} alt={title} width="218" height="327" />
             </div>
-
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{getFilmsMark(rating)}</span>
-                  <span className="movie-rating__count">{ratingAmount} ratings</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{description}</p>
-
-                <p></p>
-
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {actors.map((actor) => actor).join(`, `)} and other</strong></p>
-              </div>
-            </div>
+            <Tabs
+              rating={rating}
+              ratingAmount={ratingAmount}
+              description={description}
+              director={director}
+              actors={actors}
+              genre={genre}
+              release={release}
+              runTime={runTime}
+              reviews={reviews}
+            />
           </div>
         </div>
       </section>
@@ -196,6 +151,15 @@ FilmDetails.propTypes = {
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
   actors: PropTypes.arrayOf(PropTypes.string.isRequired),
+  runTime: PropTypes.string.isRequired,
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        dateTime: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+      })
+  ),
 };
 
 export default FilmDetails;

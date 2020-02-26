@@ -38,6 +38,22 @@ const getRandomElement = (elements) => {
   return elements[getRandomNumber(elements.length - 1)];
 };
 
+const commentsAuthors = [
+  `Emma Stone`,
+  `Sam Cook`,
+  `Billy Aiz`,
+  `Red Bird`,
+];
+
+const commentsTexts = [
+  `booring`,
+  `awesome`,
+  `not bad`,
+  `awful`,
+  `perfect`,
+  `so funny`,
+];
+const date = new Date(Date.now());
 const films = new Array(8).fill(``).map((film, index) => ({
   id: index + Date.now(),
   title: getRandomElement(titles),
@@ -51,6 +67,13 @@ const films = new Array(8).fill(``).map((film, index) => ({
   director: getRandomElement(directors),
   actors: new Array(3).fill(``).map(()=>getRandomElement(actors)),
   video: getRandomElement(videos),
+  runTime: `1h 30m`,
+  reviews: new Array(6).fill(``).map(() => ({
+    author: getRandomElement(commentsAuthors),
+    text: getRandomElement(commentsTexts),
+    rating: getRandomFloatNumber(10, 0),
+    dateTime: `${date.getMonth()} ${date.getDate()}, ${date.getFullYear()}`,
+  }))
 }));
 
 export default films;

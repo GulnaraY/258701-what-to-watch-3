@@ -13,6 +13,15 @@ const filmDetails = {
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
+  runTime: `1h 30m`,
+  reviews: new Array(3).fill(``).map(() => (
+    {
+      author: `Tim Cook`,
+      text: `hello`,
+      rating: 2.0,
+      dateTime: `10 26 2019`,
+    }
+  )),
 };
 
 it(`Should render FilmDetails`, () => {
@@ -29,6 +38,7 @@ it(`Should render FilmDetails`, () => {
           description={filmDetails.description}
           director={filmDetails.director}
           actors={filmDetails.actors}
+          reviews={filmDetails.reviews}
         />)
       .toJSON();
   expect(tree).toMatchSnapshot();

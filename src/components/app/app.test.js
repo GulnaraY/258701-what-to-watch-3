@@ -22,7 +22,16 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
+  runTime: `1h 30m`,
   video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  reviews: new Array(3).fill(``).map(() => (
+    {
+      author: `Tim Cook`,
+      text: `hello`,
+      rating: 2.0,
+      dateTime: `10 26 2019`,
+    }
+  )),
 }));
 
 it(`render App`, () => {
