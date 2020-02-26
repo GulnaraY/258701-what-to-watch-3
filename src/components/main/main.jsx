@@ -4,7 +4,7 @@ import FilmsList from '../films-list/films-list.jsx';
 
 const Main = (props) => {
 
-  const {title, genre, release, movies, onTitleClick, onCardHover} = props;
+  const {title, genre, release, movies, onTitleClick} = props;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -106,7 +106,6 @@ const Main = (props) => {
           <FilmsList
             movies={movies}
             onTitleClick={onTitleClick}
-            onCardHover={onCardHover}
           />
 
           <div className="catalog__more">
@@ -143,7 +142,6 @@ Main.propTypes = {
         id: PropTypes.number.isRequired,
       })),
   onTitleClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
 };
 
 export default Main;

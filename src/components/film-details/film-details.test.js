@@ -21,8 +21,15 @@ const filmDetails = {
       rating: 2.0,
       dateTime: `10 26 2019`,
     }
-  )),
+  ))
 };
+
+const similarMovies = new Array(4).fill(``).map((film, index) => ({
+  title: `title`,
+  picture: `title.jpg`,
+  id: index + Date.now(),
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+}));
 
 it(`Should render FilmDetails`, () => {
   const tree = rerender
@@ -39,7 +46,14 @@ it(`Should render FilmDetails`, () => {
           director={filmDetails.director}
           actors={filmDetails.actors}
           reviews={filmDetails.reviews}
-        />)
+          runTime={filmDetails.runTime}
+          similarMovies={similarMovies}
+          onTitleClick={()=>{}}
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
       .toJSON();
   expect(tree).toMatchSnapshot();
 });

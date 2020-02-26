@@ -26,7 +26,6 @@ it(`render Main`, () => {
           release={PromoMovieDetails.RELEASE}
           movies={moviesList}
           onTitleClick={() => {}}
-          onCardHover={() => {}}
         />, {
           createNodeMock: () => {
             return {};

@@ -55,7 +55,7 @@ class Tabs extends PureComponent {
   }
 
   render() {
-
+    const {onTabsLinkClick} = this.props;
     return (
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
@@ -66,6 +66,7 @@ class Tabs extends PureComponent {
                   onClick={(evt) => {
                     evt.preventDefault();
                     this._handleTabLinkClick(evt.target.text);
+                    onTabsLinkClick();
                   }}
                 >{tab}</a>
               </li>
@@ -96,6 +97,7 @@ Tabs.propTypes = {
         rating: PropTypes.number.isRequired,
       })
   ),
+  onTabsLinkClick: PropTypes.func.isRequired,
 };
 
 export default Tabs;
