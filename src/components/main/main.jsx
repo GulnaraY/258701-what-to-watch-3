@@ -5,7 +5,7 @@ import GenresList from '../genres-list/genres-list.jsx';
 const Main = (props) => {
 
   const {title, genre, release, movies, onTitleClick} = props;
-  const {onGenreClick, activeGenre, initialFilms} = props;
+  const {onGenreClick, activeGenre} = props;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -116,6 +116,8 @@ Main.propTypes = {
         id: PropTypes.number.isRequired,
       })),
   onTitleClick: PropTypes.func.isRequired,
+  onGenreClick: PropTypes.func.isRequired,
+  activeGenre: PropTypes.string.isRequired,
 };
 
 export default Main;

@@ -148,8 +148,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const {activeGenre, movies, initialFilms} = state;
-  return {activeGenre, movies, initialFilms};
+  const {activeGenre, movies} = state;
+  return {activeGenre, movies};
 };
 
 const mapDispatchToProps = (dispatch) =>({

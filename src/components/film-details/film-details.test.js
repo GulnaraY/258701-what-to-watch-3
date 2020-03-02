@@ -47,8 +47,9 @@ it(`Should render FilmDetails`, () => {
           actors={filmDetails.actors}
           reviews={filmDetails.reviews}
           runTime={filmDetails.runTime}
-          similarMovies={similarMovies}
+          movies={similarMovies}
           onTitleClick={()=>{}}
+          currentIndex={0}
         />, {
           createNodeMock: () => {
             return {};

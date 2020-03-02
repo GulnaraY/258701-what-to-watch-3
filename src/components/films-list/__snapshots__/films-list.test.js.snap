@@ -3,6 +3,11 @@
 exports[`Should films list be rendered 1`] = `
 <div
   className="catalog__movies-list"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
 >
   <article
     className="small-movie-card catalog__movies-card"

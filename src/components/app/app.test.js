@@ -1,6 +1,10 @@
 import React from 'react';
 import rerender from 'react-test-renderer';
-import App from './app.jsx';
+import {App} from './app.jsx';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore([]);
 
 const PromoMovieDetails = {
   TITLE: `Friends`,
@@ -35,14 +39,22 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
 }));
 
 it(`render App`, () => {
+  const store = mockStore({
+    movies: moviesList,
+    activeGenre: `All genres`
+  });
   const tree = rerender
     .create(
-        <App
-          promoTitle={PromoMovieDetails.TITLE}
-          promoGenre={PromoMovieDetails.GENRE}
-          promoRelease={PromoMovieDetails.RELEASE}
-          movies={moviesList}
-        />, {
+        <Provider store={store}>
+          <App
+            promoTitle={PromoMovieDetails.TITLE}
+            promoGenre={PromoMovieDetails.GENRE}
+            promoRelease={PromoMovieDetails.RELEASE}
+            onTabsLinkClick={()=>{}}
+            onGenreClick={()=>{}}
+          />
+        </Provider>
+        , {
           createNodeMock: () => {
             return {};
           }

@@ -38,6 +38,7 @@ it(`Should render Tabs`, () => {
         release={release}
         runTime={runTime}
         reviews={reviews}
+        onTabsLinkClick={()=>{}}
       />
   ).toJSON();
 

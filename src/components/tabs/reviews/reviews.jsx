@@ -8,8 +8,8 @@ const Reviews = (props) => {
     <div className="movie-card__reviews movie-card__row"
       style={{
         display: `grid`,
-        [`grid-template-columns`]: `1fr 1fr`,
-        [`grid-gap`]: `50px`
+        gridTemplateColumns: `1fr 1fr`,
+        gridGap: `50px`
       }}
     >
       {reviews.map((review, i) =>

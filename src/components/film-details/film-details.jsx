@@ -141,6 +141,7 @@ FilmDetails.propTypes = {
         id: PropTypes.number.isRequired,
       })),
   onTitleClick: PropTypes.func.isRequired,
+  currentIndex: PropTypes.number.isRequired,
 };
 
 export default FilmDetails;
