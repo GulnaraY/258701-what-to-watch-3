@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import Overview from '../overwiew/overview.jsx';
-import Details from '../details/details.jsx';
-import Reviews from '../reviews/reviews.jsx';
+import Overview from './overwiew/overview.jsx';
+import Details from './details/details.jsx';
+import Reviews from './reviews/reviews.jsx';
 
 const TabsMap = {
   OVERVIEW: `Overview`,
