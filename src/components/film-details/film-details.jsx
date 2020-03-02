@@ -6,8 +6,9 @@ import FilmsList from '../films-list/films-list.jsx';
 const FilmDetails = (props) => {
   const {title, genre, release, poster, picture} = props;
   const {rating, ratingAmount, description, director, actors, runTime} = props;
-  const {similarMovies, onTitleClick} = props;
+  const {movies, currentIndex, onTitleClick} = props;
   const {reviews} = props;
+  // const similarMovies = movies.filter((element) => element.genre === genre).slice(0, 4);
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -88,8 +89,9 @@ const FilmDetails = (props) => {
 
           <div className="catalog__movies-list">
             <FilmsList
-              movies={similarMovies}
+              movies={movies.slice(0, currentIndex).concat(movies.slice(currentIndex + 1, movies.length))}
               onTitleClick={onTitleClick}
+              activeGenre={genre}
             />
           </div>
         </section>
@@ -132,7 +134,7 @@ FilmDetails.propTypes = {
         rating: PropTypes.number.isRequired,
       })
   ),
-  similarMovies: PropTypes.arrayOf(
+  movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         picture: PropTypes.string.isRequired,

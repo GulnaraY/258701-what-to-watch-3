@@ -3,6 +3,7 @@ import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import FilmDetails from '../film-details/film-details.jsx';
+import {connect} from 'react-redux';
 
 class App extends PureComponent {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends PureComponent {
     const {step} = this.state;
     const {movies} = this.props;
     const {promoTitle, promoGenre, promoRelease} = this.props;
+    const {activeGenre, onGenreClick} = this.props;
 
     if (step === -1) {
       return (
@@ -37,13 +39,14 @@ class App extends PureComponent {
           release = {promoRelease}
           movies = {movies}
           onTitleClick = {this._handleTitlePictureClick}
+          onGenreClick = {onGenreClick}
+          activeGenre={activeGenre}
         />
       );
     }
 
     if (movies[step]) {
       const movie = movies[step];
-      const similarMovies = movies.filter((element) => element.genre === movie.genre).slice(0, 4);
       const {title, genre, release, poster, picture} = movie;
       const {rating, ratingAmount, description, director, actors, runTime} = movie;
       const {reviews} = movie;
@@ -61,7 +64,8 @@ class App extends PureComponent {
           actors={actors}
           runTime={runTime}
           reviews={reviews}
-          similarMovies={similarMovies}
+          movies={movies}
+          currentIndex={step}
           onTitleClick={this._handleTitlePictureClick}
         />
       );
@@ -72,7 +76,6 @@ class App extends PureComponent {
 
   _renderDetailsPage() {
     const {movies} = this.props;
-    const similarMovies = movies.filter((element) => element.genre === movies[0].genre).slice(0, 4);
     const {title, genre, release, poster, picture} = movies[0];
     const {rating, ratingAmount, description, director, actors, runTime} = movies[0];
     const {reviews} = movies[0];
@@ -90,7 +93,8 @@ class App extends PureComponent {
         actors={actors}
         runTime={runTime}
         reviews={reviews}
-        similarMovies={similarMovies}
+        movies={movies}
+        currentIndex={0}
         onTitleClick={this._handleTitlePictureClick}
       />
     );
@@ -139,6 +143,24 @@ App.propTypes = {
             })
         ),
       })),
+  activeGenre: PropTypes.string.isRequired,
+  onGenreClick: PropTypes.func.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  const {activeGenre, movies, initialFilms} = state;
+  return {activeGenre, movies, initialFilms};
+};
+
+const mapDispatchToProps = (dispatch) =>({
+  onGenreClick(genre) {
+    dispatch({type: `CHANGE_GENRE`, payload: genre});
+  },
+});
+
+const connectedComponent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
+
+export {connectedComponent as App};
