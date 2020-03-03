@@ -21,6 +21,7 @@ it(`Should films list be rendered`, () => {
         onTitleClick={()=>{}}
         onCardHover={()=>{}}
         activeGenre={activeGenre}
+        quantity={8}
       />, {
         createNodeMock: () => {
           return {};

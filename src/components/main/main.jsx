@@ -3,27 +3,29 @@ import PropTypes from 'prop-types';
 import FilmsList from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
-
-const ONE_RENDER_QUANTUTY = 8;
+import {connect} from 'react-redux';
+import {GenresMap} from '../../const.js';
 
 class Main extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      filmsQuantity: props.quantity,
-    };
   }
 
-  _handleShowMoreButtonClick() {
-    this.setState((prevState) => ({
-      filmsQuantity: prevState.filmsQuantity + ONE_RENDER_QUANTUTY,
-    }));
+  _filterMovies(movies, activeGenre) {
+    let filtredMovies = movies;
+
+    if (activeGenre !== GenresMap.ALL_GENRES) {
+      filtredMovies = movies.filter((movie) => movie.genre === activeGenre);
+    }
+
+    return filtredMovies;
   }
 
   render() {
     const {title, genre, release, movies, onTitleClick} = this.props;
-    const {onGenreClick, activeGenre} = this.props;
+    const {onGenreClick, activeGenre, moviesToShow, onShowMoreButtonClick} = this.props;
+    const filtredMovies = this._filterMovies(movies, activeGenre);
+
     return (
       <React.Fragment>
         <section className="movie-card">
@@ -95,15 +97,17 @@ class Main extends PureComponent {
             />
 
             <FilmsList
-              movies={movies}
+              movies={filtredMovies}
               onTitleClick={onTitleClick}
-              activeGenre={activeGenre}
-              quantity={this.state.filmsQuantity}
+              quantity={moviesToShow}
             />
+            {filtredMovies.length > moviesToShow
+              ? <ShowMoreButton
+                onShowMoreButtonClick={onShowMoreButtonClick}
+              />
+              : null
+            }
 
-            <ShowMoreButton
-              onShowMoreButtonClick={() => this._handleShowMoreButtonClick()}
-            />
           </section>
 
           <footer className="page-footer">
@@ -139,7 +143,27 @@ Main.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   onGenreClick: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired,
+  moviesToShow: PropTypes.number.isRequired,
+  onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  const {activeGenre, moviesToShow} = state;
+  return {activeGenre, moviesToShow};
+};
+
+const mapDispatchToProps = (dispatch) =>({
+  onGenreClick(genre) {
+    dispatch({type: `CHANGE_GENRE`, payload: genre});
+  },
+  onShowMoreButtonClick() {
+    dispatch({type: `SHOW_MORE`});
+  }
+});
+
+const connectedComponent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Main);
+
+export {connectedComponent as Main};

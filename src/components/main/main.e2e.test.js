@@ -1,7 +1,11 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Main from './main.jsx';
+import {Main} from './main.jsx';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore([]);
 
 const PromoMovieDetails = {
   TITLE: `Friends`,
@@ -24,17 +28,26 @@ Enzyme.configure({
 
 it(`Should title be pressed`, () => {
   const onTitleClick = jest.fn();
+  const store = mockStore({
+    movies: moviesList,
+    activeGenre: `All genres`,
+    moviesToShow: 8,
+  });
 
   const main = mount(
-      <Main
-        title={PromoMovieDetails.TITLE}
-        genre={PromoMovieDetails.GENRE}
-        release={PromoMovieDetails.RELEASE}
-        movies={moviesList}
-        onTitleClick={onTitleClick}
-        onGenreClick={() => {}}
-        activeGenre={`All genres`}
-      />
+      <Provider store={store}>
+        <Main
+          title={PromoMovieDetails.TITLE}
+          genre={PromoMovieDetails.GENRE}
+          release={PromoMovieDetails.RELEASE}
+          movies={moviesList}
+          onTitleClick={onTitleClick}
+          onGenreClick={() => {}}
+          activeGenre={`All genres`}
+          moviesToShow={8}
+          onShowMoreButtonClick={()=>{}}
+        />
+      </Provider>
   );
 
   const titleLink = main.find(`a.small-movie-card__link`);
