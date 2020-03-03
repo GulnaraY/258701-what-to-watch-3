@@ -53,6 +53,7 @@ FilmsList.propTypes = {
       })),
   onTitleClick: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default FilmsList;

@@ -139,6 +139,7 @@ Main.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   onGenreClick: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default Main;
