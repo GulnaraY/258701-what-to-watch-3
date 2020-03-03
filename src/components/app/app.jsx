@@ -5,6 +5,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import FilmDetails from '../film-details/film-details.jsx';
 import {connect} from 'react-redux';
 
+const ONE_RENDER_QUANTUTY = 8;
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -41,6 +43,7 @@ class App extends PureComponent {
           onTitleClick = {this._handleTitlePictureClick}
           onGenreClick = {onGenreClick}
           activeGenre={activeGenre}
+          quantity={ONE_RENDER_QUANTUTY}
         />
       );
     }

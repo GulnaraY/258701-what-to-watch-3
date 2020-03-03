@@ -10,17 +10,23 @@ class FilmsList extends PureComponent {
     this.state = {
       activeIndex: null,
       hoverTimeOut: null,
+      slicePosition: 8,
     };
   }
 
-  render() {
-    const {movies, onTitleClick, activeGenre} = this.props;
-
-    let filtredMovies = movies;
+  _filterMovies(movies, activeGenre, quantity) {
+    let filtredMovies = movies.slice(0, quantity);
 
     if (activeGenre !== GenresMap.ALL_GENRES) {
-      filtredMovies = movies.filter((movie) => movie.genre === activeGenre);
+      filtredMovies = movies.filter((movie) => movie.genre === activeGenre).slice(0, quantity);
     }
+
+    return filtredMovies;
+  }
+
+  render() {
+    const {movies, onTitleClick, activeGenre, quantity} = this.props;
+    const filtredMovies = this._filterMovies(movies, activeGenre, quantity);
 
     return (
       <div className="catalog__movies-list"

@@ -54,7 +54,7 @@ const commentsTexts = [
   `so funny`,
 ];
 const date = new Date(Date.now());
-const films = new Array(8).fill(``).map((film, index) => ({
+const films = new Array(50).fill(``).map((film, index) => ({
   id: index + Date.now(),
   title: getRandomElement(titles),
   genre: getRandomElement(genres),
