@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import Main from '../main/main.jsx';
+import {Main} from '../main/main.jsx';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import FilmDetails from '../film-details/film-details.jsx';
@@ -29,7 +29,6 @@ class App extends PureComponent {
     const {step} = this.state;
     const {movies} = this.props;
     const {promoTitle, promoGenre, promoRelease} = this.props;
-    const {activeGenre, onGenreClick} = this.props;
 
     if (step === -1) {
       return (
@@ -39,8 +38,6 @@ class App extends PureComponent {
           release = {promoRelease}
           movies = {movies}
           onTitleClick = {this._handleTitlePictureClick}
-          onGenreClick = {onGenreClick}
-          activeGenre={activeGenre}
         />
       );
     }
@@ -143,24 +140,17 @@ App.propTypes = {
             })
         ),
       })),
-  activeGenre: PropTypes.string.isRequired,
-  onGenreClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
-  const {activeGenre, movies} = state;
-  return {activeGenre, movies};
+  const {movies} = state;
+  return {movies};
 };
 
-const mapDispatchToProps = (dispatch) =>({
-  onGenreClick(genre) {
-    dispatch({type: `CHANGE_GENRE`, payload: genre});
-  },
-});
 
 const connectedComponent = connect(
     mapStateToProps,
-    mapDispatchToProps
+    null
 )(App);
 
 export {connectedComponent as App};

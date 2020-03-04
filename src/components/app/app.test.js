@@ -41,7 +41,8 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
 it(`render App`, () => {
   const store = mockStore({
     movies: moviesList,
-    activeGenre: `All genres`
+    activeGenre: `All genres`,
+    moviesToShow: 8,
   });
   const tree = rerender
     .create(
@@ -51,7 +52,7 @@ it(`render App`, () => {
             promoGenre={PromoMovieDetails.GENRE}
             promoRelease={PromoMovieDetails.RELEASE}
             onTabsLinkClick={()=>{}}
-            onGenreClick={()=>{}}
+            moviesToShow={mockStore.moviesToShow}
           />
         </Provider>
         , {

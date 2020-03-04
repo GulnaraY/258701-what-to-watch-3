@@ -13,20 +13,25 @@ class FilmsList extends PureComponent {
     };
   }
 
-  render() {
-    const {movies, onTitleClick, activeGenre} = this.props;
-
-    let filtredMovies = movies;
+  _filterMovies(movies, activeGenre, quantity) {
+    let filtredMovies = movies.slice(0, quantity);
 
     if (activeGenre !== GenresMap.ALL_GENRES) {
-      filtredMovies = movies.filter((movie) => movie.genre === activeGenre);
+      filtredMovies = movies.filter((movie) => movie.genre === activeGenre).slice(0, quantity);
     }
+
+    return filtredMovies;
+  }
+
+  render() {
+    const {movies, onTitleClick, quantity} = this.props;
+    const slicedMovies = movies.slice(0, quantity);
 
     return (
       <div className="catalog__movies-list"
         style={{width: 100 + `%`}}
       >
-        {filtredMovies.map((movie, index) =>
+        {slicedMovies.map((movie, index) =>
           <FilmCard
             key = {index + movie}
             filmInfo={movie}
@@ -46,7 +51,7 @@ FilmsList.propTypes = {
         id: PropTypes.number.isRequired,
       })),
   onTitleClick: PropTypes.func.isRequired,
-  activeGenre: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default FilmsList;

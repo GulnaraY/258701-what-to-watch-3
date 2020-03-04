@@ -10,19 +10,22 @@ export const GenresMap = {
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     activeGenre: GenresMap.ALL_GENRES,
-    movies: initialState.movies
+    movies: initialState.movies,
+    moviesToShow: 8,
   });
 });
 
 it(`Reducer should change activeGenre by choosing a genre`, () => {
   expect(reducer({
     activeGenre: GenresMap.ALL_GENRES,
-    movies: initialState.movies
+    movies: initialState.movies,
+    moviesToShow: 8,
   }, {
     type: ActionType.CHANGE_GENRE,
     payload: GenresMap.COMEDY,
   })).toEqual({
     activeGenre: GenresMap.COMEDY,
-    movies: initialState.movies
+    movies: initialState.movies,
+    moviesToShow: 8,
   });
 });
