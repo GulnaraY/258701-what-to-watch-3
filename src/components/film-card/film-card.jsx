@@ -38,16 +38,12 @@ class FilmCard extends PureComponent {
   }
 
   render() {
-    const {filmInfo, onTitleClick, onCardHover} = this.props;
+    const {filmInfo, onTitleClick} = this.props;
     const {title, picture, id, video} = filmInfo;
     const {isVideoPlaying} = this.state;
 
     return (
       <article className="small-movie-card catalog__movies-card"
-        onMouseOver={() => {
-          onCardHover(id);
-        }}
-
         onMouseEnter={this._handleMouseEnter}
         onMouseLeave={this._handleMouseLeave}
       >
@@ -87,7 +83,6 @@ FilmCard.propTypes = {
     video: PropTypes.string.isRequired,
   }),
   onTitleClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
 };
 
 export default FilmCard;

@@ -15,27 +15,11 @@ Enzyme.configure({
 });
 
 describe(`Should VideoPlayer play and pause`, () => {
-  it(`Should be hovered`, () => {
-    const onCardHover = jest.fn();
-
-    const filmCard = shallow(
-        <FilmCard
-          filmInfo={movie}
-          onTitleClick={()=>{}}
-          onCardHover={onCardHover}
-        />
-    );
-    filmCard.props().onMouseOver();
-
-    expect(onCardHover.mock.calls.length).toBe(1);
-  });
-
   it(`Should VideoPlayer pause`, () => {
     const filmCard = shallow(
         <FilmCard
           filmInfo={movie}
           onTitleClick={()=>{}}
-          onCardHover={()=>{}}
         />
     );
 

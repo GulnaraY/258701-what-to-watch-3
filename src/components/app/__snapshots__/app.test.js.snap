@@ -159,109 +159,35 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             All genres
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
-            Comedies
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Crime
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Documentary
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Horror
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Kids & Family
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
+            drama
           </a>
         </li>
       </ul>
       <div
         className="catalog__movies-list"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
       >
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -295,7 +221,6 @@ Array [
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -329,7 +254,6 @@ Array [
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -363,7 +287,6 @@ Array [
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -397,7 +320,6 @@ Array [
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -431,7 +353,6 @@ Array [
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -465,7 +386,6 @@ Array [
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -499,7 +419,6 @@ Array [
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"

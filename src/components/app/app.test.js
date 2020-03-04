@@ -1,6 +1,10 @@
 import React from 'react';
 import rerender from 'react-test-renderer';
-import App from './app.jsx';
+import {App} from './app.jsx';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore([]);
 
 const PromoMovieDetails = {
   TITLE: `Friends`,
@@ -22,18 +26,35 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
+  runTime: `1h 30m`,
   video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  reviews: new Array(3).fill(``).map(() => (
+    {
+      author: `Tim Cook`,
+      text: `hello`,
+      rating: 2.0,
+      dateTime: `10 26 2019`,
+    }
+  )),
 }));
 
 it(`render App`, () => {
+  const store = mockStore({
+    movies: moviesList,
+    activeGenre: `All genres`
+  });
   const tree = rerender
     .create(
-        <App
-          promoTitle={PromoMovieDetails.TITLE}
-          promoGenre={PromoMovieDetails.GENRE}
-          promoRelease={PromoMovieDetails.RELEASE}
-          movies={moviesList}
-        />, {
+        <Provider store={store}>
+          <App
+            promoTitle={PromoMovieDetails.TITLE}
+            promoGenre={PromoMovieDetails.GENRE}
+            promoRelease={PromoMovieDetails.RELEASE}
+            onTabsLinkClick={()=>{}}
+            onGenreClick={()=>{}}
+          />
+        </Provider>
+        , {
           createNodeMock: () => {
             return {};
           }

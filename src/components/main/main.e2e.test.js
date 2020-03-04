@@ -32,7 +32,8 @@ it(`Should title be pressed`, () => {
         release={PromoMovieDetails.RELEASE}
         movies={moviesList}
         onTitleClick={onTitleClick}
-        onCardHover={()=>{}}
+        onGenreClick={() => {}}
+        activeGenre={`All genres`}
       />
   );
 

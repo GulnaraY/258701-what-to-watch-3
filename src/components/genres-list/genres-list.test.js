@@ -1,11 +1,12 @@
 import React from 'react';
 import rerender from 'react-test-renderer';
-import FilmsList from './films-list.jsx';
+import GenresList from './genres-list.jsx';
 
 const titles = [`One`, `Two`, `Tree`, `Four`, `Five`, `Six`, `Seven`, `Eight`];
 
 const films = new Array(8).fill(``).map((film, index) => ({
   title: titles[index],
+  genre: `comedy`,
   picture: titles[index] + `jpg`,
   id: index + Date.now(),
   video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
@@ -13,20 +14,13 @@ const films = new Array(8).fill(``).map((film, index) => ({
 
 const activeGenre = `All genres`;
 
-it(`Should films list be rendered`, () => {
-  const tree = rerender
-  .create(
-      <FilmsList
-        movies={films}
-        onTitleClick={()=>{}}
-        onCardHover={()=>{}}
+it(`Should render GenresList`, () => {
+  const tree = rerender.create(
+      <GenresList
+        films={films}
+        onGenreClick={()=> {}}
         activeGenre={activeGenre}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
-    .toJSON();
-
+      />
+  ).toJSON();
   expect(tree).toMatchSnapshot();
 });

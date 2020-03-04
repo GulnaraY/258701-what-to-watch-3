@@ -3,6 +3,7 @@ import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import FilmDetails from '../film-details/film-details.jsx';
+import {connect} from 'react-redux';
 
 class App extends PureComponent {
   constructor(props) {
@@ -13,10 +14,6 @@ class App extends PureComponent {
     };
 
     this._handleTitlePictureClick = this._handleTitlePictureClick.bind(this);
-  }
-
-  _handleCardHover() {
-
   }
 
   _handleTitlePictureClick(filmId) {
@@ -32,6 +29,7 @@ class App extends PureComponent {
     const {step} = this.state;
     const {movies} = this.props;
     const {promoTitle, promoGenre, promoRelease} = this.props;
+    const {activeGenre, onGenreClick} = this.props;
 
     if (step === -1) {
       return (
@@ -41,7 +39,8 @@ class App extends PureComponent {
           release = {promoRelease}
           movies = {movies}
           onTitleClick = {this._handleTitlePictureClick}
-          onCardHover = {this._handleCardHover}
+          onGenreClick = {onGenreClick}
+          activeGenre={activeGenre}
         />
       );
     }
@@ -49,7 +48,8 @@ class App extends PureComponent {
     if (movies[step]) {
       const movie = movies[step];
       const {title, genre, release, poster, picture} = movie;
-      const {rating, ratingAmount, description, director, actors} = movie;
+      const {rating, ratingAmount, description, director, actors, runTime} = movie;
+      const {reviews} = movie;
       return (
         <FilmDetails
           title={title}
@@ -62,6 +62,11 @@ class App extends PureComponent {
           description={description}
           director={director}
           actors={actors}
+          runTime={runTime}
+          reviews={reviews}
+          movies={movies}
+          currentIndex={step}
+          onTitleClick={this._handleTitlePictureClick}
         />
       );
     }
@@ -72,7 +77,8 @@ class App extends PureComponent {
   _renderDetailsPage() {
     const {movies} = this.props;
     const {title, genre, release, poster, picture} = movies[0];
-    const {rating, ratingAmount, description, director, actors} = movies[0];
+    const {rating, ratingAmount, description, director, actors, runTime} = movies[0];
+    const {reviews} = movies[0];
     return (
       <FilmDetails
         title={title}
@@ -85,6 +91,11 @@ class App extends PureComponent {
         description={description}
         director={director}
         actors={actors}
+        runTime={runTime}
+        reviews={reviews}
+        movies={movies}
+        currentIndex={0}
+        onTitleClick={this._handleTitlePictureClick}
       />
     );
   }
@@ -122,7 +133,34 @@ App.propTypes = {
         description: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
         actors: PropTypes.arrayOf(PropTypes.string.isRequired),
+        runTime: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              text: PropTypes.string.isRequired,
+              author: PropTypes.string.isRequired,
+              dateTime: PropTypes.string.isRequired,
+              rating: PropTypes.number.isRequired,
+            })
+        ),
       })),
+  activeGenre: PropTypes.string.isRequired,
+  onGenreClick: PropTypes.func.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  const {activeGenre, movies} = state;
+  return {activeGenre, movies};
+};
+
+const mapDispatchToProps = (dispatch) =>({
+  onGenreClick(genre) {
+    dispatch({type: `CHANGE_GENRE`, payload: genre});
+  },
+});
+
+const connectedComponent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
+
+export {connectedComponent as App};

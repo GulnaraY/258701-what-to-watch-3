@@ -13,7 +13,23 @@ const filmDetails = {
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
+  runTime: `1h 30m`,
+  reviews: new Array(3).fill(``).map(() => (
+    {
+      author: `Tim Cook`,
+      text: `hello`,
+      rating: 2.0,
+      dateTime: `10 26 2019`,
+    }
+  ))
 };
+
+const similarMovies = new Array(4).fill(``).map((film, index) => ({
+  title: `title`,
+  picture: `title.jpg`,
+  id: index + Date.now(),
+  video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+}));
 
 it(`Should render FilmDetails`, () => {
   const tree = rerender
@@ -29,7 +45,16 @@ it(`Should render FilmDetails`, () => {
           description={filmDetails.description}
           director={filmDetails.director}
           actors={filmDetails.actors}
-        />)
+          reviews={filmDetails.reviews}
+          runTime={filmDetails.runTime}
+          movies={similarMovies}
+          onTitleClick={()=>{}}
+          currentIndex={0}
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
       .toJSON();
   expect(tree).toMatchSnapshot();
 });
