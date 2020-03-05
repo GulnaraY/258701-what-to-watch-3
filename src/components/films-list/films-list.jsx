@@ -1,30 +1,17 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import FilmCard from '../film-card/film-card.jsx';
-import {GenresMap} from '../../const.js';
+import {connect} from 'react-redux';
 
 class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeIndex: null,
-      hoverTimeOut: null,
-    };
-  }
-
-  _filterMovies(movies, activeGenre, quantity) {
-    let filtredMovies = movies.slice(0, quantity);
-
-    if (activeGenre !== GenresMap.ALL_GENRES) {
-      filtredMovies = movies.filter((movie) => movie.genre === activeGenre).slice(0, quantity);
-    }
-
-    return filtredMovies;
+    this._hoverTimeOut = null;
   }
 
   render() {
-    const {movies, onTitleClick, quantity} = this.props;
+    const {movies, onTitleClick, quantity, activeMovie, onFilmCardMouseEnter, onFilmCardMouseLeave} = this.props;
     const slicedMovies = movies.slice(0, quantity);
 
     return (
@@ -36,6 +23,9 @@ class FilmsList extends PureComponent {
             key = {index + movie}
             filmInfo={movie}
             onTitleClick={onTitleClick}
+            isPlaying={movie.id === activeMovie ? true : false}
+            onFilmCardMouseEnter={onFilmCardMouseEnter}
+            onFilmCardMouseLeave={onFilmCardMouseLeave}
           />
         )}
       </div>
@@ -52,6 +42,30 @@ FilmsList.propTypes = {
       })),
   onTitleClick: PropTypes.func.isRequired,
   quantity: PropTypes.number.isRequired,
+  onFilmCardMouseEnter: PropTypes.func.isRequired,
+  onFilmCardMouseLeave: PropTypes.func.isRequired,
+  activeMovie: PropTypes.number.isRequired,
 };
 
-export default FilmsList;
+const mapStateToProps = (state) => {
+  const {activeMovie} = state;
+  return {activeMovie};
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onFilmCardMouseEnter(id) {
+    dispatch({type: `SET_ACTIVE_FILM`, payload: id});
+  },
+
+  onFilmCardMouseLeave() {
+    dispatch({type: `SET_ACTIVE_FILM`, payload: 0});
+
+  },
+});
+
+const connectedComponent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(FilmsList);
+
+export {connectedComponent as FilmsList};

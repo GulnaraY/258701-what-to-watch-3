@@ -5,65 +5,39 @@ import VideoPlayer from '../video-player/video-player.jsx';
 class FilmCard extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isVideoPlaying: false,
-      hoverTimeOut: null,
-    };
-
-    this._handleMouseEnter = this._handleMouseEnter.bind(this);
-    this._handleMouseLeave = this._handleMouseLeave.bind(this);
-  }
-
-  _handleMouseEnter() {
-    this.setState({
-      hoverTimeOut: setTimeout(() => this.setState({
-        isVideoPlaying: true,
-      }), 1000),
-    });
-  }
-
-  _handleMouseLeave() {
-    this._clearHoverTimeout();
-    this.setState({
-      isVideoPlaying: false,
-    });
-  }
-
-  _clearHoverTimeout() {
-    clearTimeout(this.state.hoverTimeOut);
-    this.setState({
-      hoverTimeOut: null,
-    });
+    this._timeout = null;
   }
 
   render() {
-    const {filmInfo, onTitleClick} = this.props;
+    const {filmInfo, onTitleClick, isPlaying, onFilmCardMouseEnter, onFilmCardMouseLeave} = this.props;
     const {title, picture, id, video} = filmInfo;
-    const {isVideoPlaying} = this.state;
-
     return (
       <article className="small-movie-card catalog__movies-card"
-        onMouseEnter={this._handleMouseEnter}
-        onMouseLeave={this._handleMouseLeave}
+        onMouseEnter={() => {
+          this._timeout = setTimeout(onFilmCardMouseEnter, 1000, id);
+        }}
+        onMouseLeave={() => {
+          clearTimeout(this._timeout);
+          onFilmCardMouseLeave();
+        }}
       >
         <div className="small-movie-card__image"
           onClick = {() => {
-            this._clearHoverTimeout();
+            clearTimeout(this._timeout);
             onTitleClick(id);
           }}
         >
           <VideoPlayer
             src={video}
             poster={picture}
-            isPlaying={isVideoPlaying}
+            isPlaying={isPlaying}
           />
         </div>
         <h3 className="small-movie-card__title">
           <a
             onClick = {(evt) => {
               evt.preventDefault();
-              this._clearHoverTimeout();
+              clearTimeout(this._timeout);
               onTitleClick(id);
             }}
             className="small-movie-card__link"
@@ -83,6 +57,9 @@ FilmCard.propTypes = {
     video: PropTypes.string.isRequired,
   }),
   onTitleClick: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  onFilmCardMouseEnter: PropTypes.func.isRequired,
+  onFilmCardMouseLeave: PropTypes.func.isRequired,
 };
 
 export default FilmCard;

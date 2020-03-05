@@ -20,13 +20,16 @@ describe(`Should VideoPlayer play and pause`, () => {
         <FilmCard
           filmInfo={movie}
           onTitleClick={()=>{}}
+          onFilmCardMouseLeave={()=>{}}
+          onFilmCardMouseEnter={()=>{}}
+          isPlaying={true}
         />
     );
 
     const movieCard = filmCard.find(`.small-movie-card`);
     movieCard.simulate(`mouseLeave`);
 
-    expect(filmCard.state(`isVideoPlaying`)).toEqual(false);
+    expect(filmCard.prop(`isPlaying`)).toEqual(false);
   });
 
   it(`Should VideoPlayer play`, () => {
@@ -35,6 +38,9 @@ describe(`Should VideoPlayer play and pause`, () => {
           filmInfo={movie}
           onTitleClick={()=>{}}
           onCardHover={()=>{}}
+          onFilmCardMouseEnter={()=>{}}
+          onFilmCardMouseLeave={()=>{}}
+          isPlaying={false}
         />
     );
 
@@ -44,6 +50,6 @@ describe(`Should VideoPlayer play and pause`, () => {
     jest.advanceTimersByTime(1001);
     filmCard.update();
 
-    expect(filmCard.state(`isVideoPlaying`)).toEqual(true);
+    expect(filmCard.prop(`isPlaying`)).toEqual(true);
   });
 });

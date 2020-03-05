@@ -26,6 +26,7 @@ it(`render Main`, () => {
     movies: moviesList,
     activeGenre: `All genres`,
     moviesToShow: 8,
+    activeMovie: 0,
   });
   const tree = rerender
     .create(
@@ -40,6 +41,7 @@ it(`render Main`, () => {
             activeGenre={`All genres`}
             moviesToShow={8}
             onShowMoreButtonClick={()=>{}}
+            activeMovie={store.activeMovie}
           />
         </Provider>
         , {

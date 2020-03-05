@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import FilmsList from '../films-list/films-list.jsx';
+import {FilmsList} from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import {connect} from 'react-redux';
