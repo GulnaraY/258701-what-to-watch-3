@@ -30,7 +30,7 @@ it(`Should films list be rendered`, () => {
           onCardHover={()=>{}}
           activeGenre={activeGenre}
           quantity={8}
-          activeMovie={store.activeMovie}
+          activeMovie={films[0]}
           onFilmCardMouseEnter={() => {}}
           onFilmCardMouseLeave={() => {}}
         />

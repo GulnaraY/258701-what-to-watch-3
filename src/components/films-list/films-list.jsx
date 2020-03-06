@@ -44,7 +44,7 @@ FilmsList.propTypes = {
   quantity: PropTypes.number.isRequired,
   onFilmCardMouseEnter: PropTypes.func.isRequired,
   onFilmCardMouseLeave: PropTypes.func.isRequired,
-  activeMovie: PropTypes.number.isRequired,
+  activeMovie: PropTypes.number,
 };
 
 const mapStateToProps = (state) => {

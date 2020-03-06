@@ -28,8 +28,9 @@ describe(`Should VideoPlayer play and pause`, () => {
 
     const movieCard = filmCard.find(`.small-movie-card`);
     movieCard.simulate(`mouseLeave`);
-
-    expect(filmCard.prop(`isPlaying`)).toEqual(false);
+    setTimeout(() => {
+      expect(filmCard.prop(`isPlaying`)).toEqual(false);
+    }, 1200);
   });
 
   it(`Should VideoPlayer play`, () => {
@@ -50,6 +51,8 @@ describe(`Should VideoPlayer play and pause`, () => {
     jest.advanceTimersByTime(1001);
     filmCard.update();
 
-    expect(filmCard.prop(`isPlaying`)).toEqual(true);
+    setTimeout(() => {
+      expect(filmCard.prop(`isPlaying`)).toEqual(true);
+    }, 1200);
   });
 });
