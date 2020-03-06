@@ -1,6 +1,10 @@
 import React from 'react';
 import rerender from 'react-test-renderer';
 import FilmDetails from './film-details.jsx';
+import {Provider} from 'react-redux';
+import configurationStore from 'redux-mock-store';
+
+const mockStore = configurationStore([]);
 
 const filmDetails = {
   title: `Summer`,
@@ -32,25 +36,30 @@ const similarMovies = new Array(4).fill(``).map((film, index) => ({
 }));
 
 it(`Should render FilmDetails`, () => {
+  const store = mockStore({
+    activeMovie: 8,
+  });
   const tree = rerender
     .create(
-        <FilmDetails
-          title={filmDetails.title}
-          genre={filmDetails.genre}
-          release={filmDetails.release}
-          poster={filmDetails.poster}
-          picture={filmDetails.picture}
-          rating={filmDetails.rating}
-          ratingAmount={filmDetails.ratingAmount}
-          description={filmDetails.description}
-          director={filmDetails.director}
-          actors={filmDetails.actors}
-          reviews={filmDetails.reviews}
-          runTime={filmDetails.runTime}
-          movies={similarMovies}
-          onTitleClick={()=>{}}
-          currentIndex={0}
-        />, {
+        <Provider store={store}>
+          <FilmDetails
+            title={filmDetails.title}
+            genre={filmDetails.genre}
+            release={filmDetails.release}
+            poster={filmDetails.poster}
+            picture={filmDetails.picture}
+            rating={filmDetails.rating}
+            ratingAmount={filmDetails.ratingAmount}
+            description={filmDetails.description}
+            director={filmDetails.director}
+            actors={filmDetails.actors}
+            reviews={filmDetails.reviews}
+            runTime={filmDetails.runTime}
+            movies={similarMovies}
+            onTitleClick={()=>{}}
+            currentIndex={0}
+          />
+        </Provider>, {
           createNodeMock: () => {
             return {};
           }

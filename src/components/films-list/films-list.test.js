@@ -1,6 +1,10 @@
 import React from 'react';
 import rerender from 'react-test-renderer';
-import FilmsList from './films-list.jsx';
+import {FilmsList} from './films-list.jsx';
+import {Provider} from 'react-redux';
+import configurationStore from 'redux-mock-store';
+
+const mockStore = configurationStore([]);
 
 const titles = [`One`, `Two`, `Tree`, `Four`, `Five`, `Six`, `Seven`, `Eight`];
 
@@ -14,15 +18,23 @@ const films = new Array(8).fill(``).map((film, index) => ({
 const activeGenre = `All genres`;
 
 it(`Should films list be rendered`, () => {
+  const store = mockStore({
+    activeMovie: 8,
+  });
   const tree = rerender
   .create(
-      <FilmsList
-        movies={films}
-        onTitleClick={()=>{}}
-        onCardHover={()=>{}}
-        activeGenre={activeGenre}
-        quantity={8}
-      />, {
+      <Provider store={store}>
+        <FilmsList
+          movies={films}
+          onTitleClick={()=>{}}
+          onCardHover={()=>{}}
+          activeGenre={activeGenre}
+          quantity={8}
+          activeMovie={films[0]}
+          onFilmCardMouseEnter={() => {}}
+          onFilmCardMouseLeave={() => {}}
+        />
+      </Provider>, {
         createNodeMock: () => {
           return {};
         }

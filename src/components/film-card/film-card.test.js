@@ -15,6 +15,9 @@ it(`Should FilmCard be rendered correctly`, () => {
       <FilmCard
         filmInfo={movie}
         onTitleClick={()=>{}}
+        isPlaying={false}
+        onFilmCardMouseEnter={() => {}}
+        onFilmCardMouseLeave={() => {}}
       />, {
         createNodeMock: () => {
           return {};

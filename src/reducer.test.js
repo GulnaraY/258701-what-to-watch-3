@@ -12,6 +12,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     activeGenre: GenresMap.ALL_GENRES,
     movies: initialState.movies,
     moviesToShow: 8,
+    activeMovie: 0,
   });
 });
 
@@ -20,6 +21,7 @@ it(`Reducer should change activeGenre by choosing a genre`, () => {
     activeGenre: GenresMap.ALL_GENRES,
     movies: initialState.movies,
     moviesToShow: 8,
+    activeMovie: 0,
   }, {
     type: ActionType.CHANGE_GENRE,
     payload: GenresMap.COMEDY,
@@ -27,5 +29,6 @@ it(`Reducer should change activeGenre by choosing a genre`, () => {
     activeGenre: GenresMap.COMEDY,
     movies: initialState.movies,
     moviesToShow: 8,
+    activeMovie: 0,
   });
 });

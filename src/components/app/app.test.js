@@ -43,6 +43,7 @@ it(`render App`, () => {
     movies: moviesList,
     activeGenre: `All genres`,
     moviesToShow: 8,
+    activeMovie: 0,
   });
   const tree = rerender
     .create(
@@ -53,6 +54,7 @@ it(`render App`, () => {
             promoRelease={PromoMovieDetails.RELEASE}
             onTabsLinkClick={()=>{}}
             moviesToShow={mockStore.moviesToShow}
+            activeMovie={store.activeMovie}
           />
         </Provider>
         , {

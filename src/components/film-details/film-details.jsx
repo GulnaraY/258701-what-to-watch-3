@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs.jsx';
-import FilmsList from '../films-list/films-list.jsx';
+import {FilmsList} from '../films-list/films-list.jsx';
+
+const SIMILAR_ITEMS_QUANTITY = 4;
 
 const FilmDetails = (props) => {
   const {title, genre, release, poster, picture} = props;
@@ -92,6 +94,7 @@ const FilmDetails = (props) => {
               movies={movies.slice(0, currentIndex).concat(movies.slice(currentIndex + 1, movies.length))}
               onTitleClick={onTitleClick}
               activeGenre={genre}
+              quantity={SIMILAR_ITEMS_QUANTITY}
             />
           </div>
         </section>
