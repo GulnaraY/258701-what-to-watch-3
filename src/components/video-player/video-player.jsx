@@ -11,7 +11,7 @@ class VideoPlayer extends PureComponent {
       process: null,
       isLoading: true,
       isPlaying: props.isPlaying,
-      isMute: true,
+      isMute: props.isMute,
     };
   }
   componentDidMount() {
@@ -45,9 +45,9 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {src, poster} = this.props;
+    const {src, poster, width, height} = this.props;
     const video = <video
-      width ={270} height ={175}
+      width ={width} height ={height}
       muted={this.state.isMute}
       poster={`img/${poster}`}
       ref={this._videoRef}
@@ -60,9 +60,12 @@ class VideoPlayer extends PureComponent {
 
   componentDidUpdate() {
     const video = this._videoRef.current;
+    const {pauseVideo} = this.props;
 
     if (this.props.isPlaying) {
       video.play();
+    } else if (pauseVideo) {
+      video.pause();
     } else {
       video.load();
     }
