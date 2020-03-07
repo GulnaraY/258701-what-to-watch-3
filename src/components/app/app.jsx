@@ -28,7 +28,7 @@ class App extends PureComponent {
   _renderHomePage() {
     const {step} = this.state;
     const {movies} = this.props;
-    const {promoTitle, promoGenre, promoRelease} = this.props;
+    const {promoTitle, promoGenre, promoRelease, promoVideo, promoPoster} = this.props;
 
     if (step === -1) {
       return (
@@ -38,13 +38,15 @@ class App extends PureComponent {
           release = {promoRelease}
           movies = {movies}
           onTitleClick = {this._handleTitlePictureClick}
+          video = {promoVideo}
+          poster = {promoPoster}
         />
       );
     }
 
     if (movies[step]) {
       const movie = movies[step];
-      const {title, genre, release, poster, picture} = movie;
+      const {title, genre, release, poster, picture, video} = movie;
       const {rating, ratingAmount, description, director, actors, runTime} = movie;
       const {reviews} = movie;
       return (
@@ -64,6 +66,7 @@ class App extends PureComponent {
           movies={movies}
           currentIndex={step}
           onTitleClick={this._handleTitlePictureClick}
+          video={video}
         />
       );
     }
@@ -73,7 +76,7 @@ class App extends PureComponent {
 
   _renderDetailsPage() {
     const {movies} = this.props;
-    const {title, genre, release, poster, picture} = movies[0];
+    const {title, genre, release, poster, picture, video} = movies[0];
     const {rating, ratingAmount, description, director, actors, runTime} = movies[0];
     const {reviews} = movies[0];
     return (
@@ -93,6 +96,7 @@ class App extends PureComponent {
         movies={movies}
         currentIndex={0}
         onTitleClick={this._handleTitlePictureClick}
+        video={video}
       />
     );
   }
@@ -117,6 +121,8 @@ App.propTypes = {
   promoTitle: PropTypes.string.isRequired,
   promoGenre: PropTypes.string.isRequired,
   promoRelease: PropTypes.number.isRequired,
+  promoVideo: PropTypes.string.isRequired,
+  promoPoster: PropTypes.string.isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,

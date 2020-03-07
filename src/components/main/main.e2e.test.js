@@ -11,6 +11,8 @@ const PromoMovieDetails = {
   TITLE: `Friends`,
   GENRE: `Comedy`,
   RELEASE: 2004,
+  VIDEO: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  POSTER: `moonrise-kingdom.jpg`,
 };
 
 const titles = [`One`, `Two`, `Tree`, `Four`, `Five`, `Six`, `Seven`, `Eight`];
@@ -46,6 +48,8 @@ it(`Should title be pressed`, () => {
           activeGenre={`All genres`}
           moviesToShow={8}
           onShowMoreButtonClick={()=>{}}
+          video={PromoMovieDetails.VIDEO}
+          poster={PromoMovieDetails.POSTER}
         />
       </Provider>
   );

@@ -10,6 +10,12 @@ it(`Should render VideoPlayer`, () => {
         src={src}
         poster={poster}
         isPlaying={true}
+        isMute={true}
+        pauseVideo={true}
+        width={``}
+        heighth={``}
+        getCurrentDuration={()=>{}}
+        getVideoDuration={()=>{}}
       />, {
         createNodeMock: () => {
           return {};

@@ -93,6 +93,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -280,10 +281,10 @@ Array [
               onClick={[Function]}
             >
               <video
-                height={175}
+                height="175"
                 muted={true}
                 poster="img/title.jpg"
-                width={270}
+                width="270"
               >
                 <source
                   src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -313,10 +314,10 @@ Array [
               onClick={[Function]}
             >
               <video
-                height={175}
+                height="175"
                 muted={true}
                 poster="img/title.jpg"
-                width={270}
+                width="270"
               >
                 <source
                   src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -346,10 +347,10 @@ Array [
               onClick={[Function]}
             >
               <video
-                height={175}
+                height="175"
                 muted={true}
                 poster="img/title.jpg"
-                width={270}
+                width="270"
               >
                 <source
                   src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"

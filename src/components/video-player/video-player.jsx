@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -11,15 +11,18 @@ class VideoPlayer extends PureComponent {
       process: null,
       isLoading: true,
       isPlaying: props.isPlaying,
-      isMute: true,
+      isMute: props.isMute,
     };
   }
   componentDidMount() {
     const video = this._videoRef.current;
+    const {getVideoDuration} = this.props;
+    const {getCurrentDuration} = this.props;
 
-    video.oncanplaythrough = () => this.setState({
-      isLoading: false,
-    });
+    video.oncanplaythrough = () => {
+      this.setState({isLoading: false});
+      getVideoDuration(Math.floor(video.duration));
+    };
 
     video.onplay = () => this.setState({
       isPlaying: true,
@@ -29,9 +32,12 @@ class VideoPlayer extends PureComponent {
       isPlaying: false,
     });
 
-    video.ontimeupdate = () => this.setState({
-      progress: video.currentTime,
-    });
+    video.ontimeupdate = () => {
+      this.setState({
+        progress: Math.floor(video.currentTime),
+      });
+      getCurrentDuration(Math.floor(video.currentTime));
+    };
   }
 
   componentWillUnmount() {
@@ -45,9 +51,9 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {src, poster} = this.props;
+    const {src, poster, width, height} = this.props;
     const video = <video
-      width ={270} height ={175}
+      width ={width} height ={height}
       muted={this.state.isMute}
       poster={`img/${poster}`}
       ref={this._videoRef}
@@ -60,9 +66,12 @@ class VideoPlayer extends PureComponent {
 
   componentDidUpdate() {
     const video = this._videoRef.current;
+    const {pauseVideo} = this.props;
 
     if (this.props.isPlaying) {
       video.play();
+    } else if (pauseVideo) {
+      video.pause();
     } else {
       video.load();
     }
@@ -74,5 +83,11 @@ VideoPlayer.propTypes = {
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
+  isMute: PropTypes.bool.isRequired,
+  pauseVideo: PropTypes.bool.isRequired,
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  getCurrentDuration: PropTypes.func.isRequired,
+  getVideoDuration: PropTypes.func.isRequired,
 };
 export default VideoPlayer;
