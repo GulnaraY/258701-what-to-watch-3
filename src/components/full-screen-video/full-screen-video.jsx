@@ -10,8 +10,11 @@ class FullScreenVideo extends PureComponent {
   constructor(props) {
     super(props);
 
+    this._wholeDuration = null;
+
     this.state = {
-      isVideoPlaying: false,
+      isVideoPlaying: true,
+      progress: null,
     };
   }
 
@@ -21,12 +24,23 @@ class FullScreenVideo extends PureComponent {
     }));
   }
 
+  _getVideoDuration(wholeDuration) {
+    this._wholeDuration = wholeDuration;
+  }
+
+  _getCurrentDuration(currentDuration) {
+    this.setState({
+      progress: currentDuration,
+    });
+  }
+
   render() {
     const {isVideoPlaying} = this.state;
     const {onVideoExit, title, video, poster} = this.props;
+    const lessDuration = this._wholeDuration - this.state.progress;
+    const progressBar = this.state.progress * 100 / this._wholeDuration;
     return (
       <div className="player">
-        {/* <video src="#" className="player__video" poster="img/player-poster.jpg"></video> */}
         <VideoPlayer
           isPlaying = {isVideoPlaying}
           src={video}
@@ -35,6 +49,8 @@ class FullScreenVideo extends PureComponent {
           height={FULL_SCREEN_SIZE}
           pauseVideo={VIDEO_SHOULD_PAUSE}
           isMute={VIDEO_IS_MUTE}
+          getVideoDuration={(duration) => this._getVideoDuration(duration)}
+          getCurrentDuration={(currentDuration) => this._getCurrentDuration(currentDuration)}
         />
 
         <button
@@ -45,20 +61,29 @@ class FullScreenVideo extends PureComponent {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value="30" max="100"></progress>
-              <div className="player__toggler" style={{left: 30 + `%`}}>Toggler</div>
+              <progress className="player__progress" value={progressBar} max="100"></progress>
+              <div className="player__toggler" style={{left: `${progressBar}` + `%`}}>Toggler</div>
             </div>
-            <div className="player__time-value">1:30:29</div>
+            <div className="player__time-value">{lessDuration}</div>
           </div>
   
           <div className="player__controls-row">
             <button
               onClick={() => this._handlePlayButtonClick()}
               type="button" className="player__play">
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"></use>
-              </svg>
-              <span>Play</span>
+              {isVideoPlaying
+                ? <React.Fragment>
+                  <svg viewBox="0 0 14 21" width="14" height="21">
+                    <use xlinkHref="#play"></use>
+                  </svg>
+                  <span>Pause</span>
+                </React.Fragment>
+                : <React.Fragment>
+                  <svg viewBox="0 0 14 21" width="14" height="21">
+                    <use xlinkHref="#pause"></use>
+                  </svg>
+                  <span>Pause</span>
+                </React.Fragment>}
             </button>
             <div className="player__name">{title}</div>
 

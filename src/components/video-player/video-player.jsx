@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -16,10 +16,13 @@ class VideoPlayer extends PureComponent {
   }
   componentDidMount() {
     const video = this._videoRef.current;
+    const {getVideoDuration} = this.props;
+    const {getCurrentDuration} = this.props;
 
-    video.oncanplaythrough = () => this.setState({
-      isLoading: false,
-    });
+    video.oncanplaythrough = () => {
+      this.setState({isLoading: false});
+      getVideoDuration(Math.floor(video.duration));
+    };
 
     video.onplay = () => this.setState({
       isPlaying: true,
@@ -29,9 +32,12 @@ class VideoPlayer extends PureComponent {
       isPlaying: false,
     });
 
-    video.ontimeupdate = () => this.setState({
-      progress: video.currentTime,
-    });
+    video.ontimeupdate = () => {
+      this.setState({
+        progress: Math.floor(video.currentTime),
+      });
+      getCurrentDuration(Math.floor(video.currentTime));
+    };
   }
 
   componentWillUnmount() {
@@ -77,5 +83,11 @@ VideoPlayer.propTypes = {
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
+  isMute: PropTypes.bool.isRequired,
+  pauseVideo: PropTypes.bool.isRequired,
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  getCurrentDuration: PropTypes.func.isRequired,
+  getVideoDuration: PropTypes.func.isRequired,
 };
 export default VideoPlayer;

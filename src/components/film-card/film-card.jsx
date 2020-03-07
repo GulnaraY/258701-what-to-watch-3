@@ -2,8 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../video-player/video-player.jsx';
 
-const cardWidth = 270;
-const cardHeight = 175;
+const cardWidth = `270`;
+const cardHeight = `175`;
 const VIDEO_SHOULD_PAUSE = false;
 const VIDEO_IS_MUTE = true;
 
@@ -40,6 +40,8 @@ class FilmCard extends PureComponent {
             width={cardWidth}
             height={cardHeight}
             isMute={VIDEO_IS_MUTE}
+            getVideoDuration={()=>{}}
+            getCurrentDuration={()=>{}}
           />
         </div>
         <h3 className="small-movie-card__title">

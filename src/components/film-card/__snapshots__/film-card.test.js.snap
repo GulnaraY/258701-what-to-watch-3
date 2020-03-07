@@ -11,10 +11,10 @@ exports[`Should FilmCard be rendered correctly 1`] = `
     onClick={[Function]}
   >
     <video
-      height={175}
+      height="175"
       muted={true}
       poster="img/summer.jpg"
-      width={270}
+      width="270"
     >
       <source
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"

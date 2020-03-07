@@ -195,10 +195,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Onejpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -228,10 +228,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Twojpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -261,10 +261,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Treejpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -294,10 +294,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Fourjpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -327,10 +327,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Fivejpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -360,10 +360,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Sixjpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -393,10 +393,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Sevenjpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
@@ -426,10 +426,10 @@ Array [
             onClick={[Function]}
           >
             <video
-              height={175}
+              height="175"
               muted={true}
               poster="img/Eightjpg"
-              width={270}
+              width="270"
             >
               <source
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
