@@ -29,9 +29,12 @@ class FullScreenVideo extends PureComponent {
   }
 
   _getCurrentDuration(currentDuration) {
-    this.setState({
-      progress: currentDuration,
-    });
+    if (currentDuration) {
+      this.setState({
+        progress: currentDuration,
+      });
+    }
+
   }
 
   render() {

@@ -6,6 +6,7 @@ import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import {connect} from 'react-redux';
 import {GenresMap} from '../../const.js';
 import FullScreenVideo from '../full-screen-video/full-screen-video.jsx';
+import {getActiveGenre, getMoviesToShow} from '../../reducer/application/selectors.js';
 
 class Main extends PureComponent {
   constructor(props) {
@@ -39,7 +40,7 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {title, genre, release, movies, onTitleClick, video, poster} = this.props;
+    const {title, genre, release, movies, onTitleClick, video, poster, backgroundImage} = this.props;
     const {onGenreClick, activeGenre, moviesToShow, onShowMoreButtonClick} = this.props;
     const filtredMovies = this._filterMovies(movies, activeGenre);
     const {isVideoPlaying} = this.state;
@@ -48,7 +49,7 @@ class Main extends PureComponent {
         <React.Fragment>
           <section className="movie-card">
             <div className="movie-card__bg">
-              <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+              <img src={backgroundImage} alt={title}/>
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -73,8 +74,8 @@ class Main extends PureComponent {
               <div className="movie-card__info">
                 <div className="movie-card__poster">
                   <img
-                    src="img/the-grand-budapest-hotel-poster.jpg"
-                    alt="The Grand Budapest Hotel poster"
+                    src={poster}
+                    alt={title}
                     width="218"
                     height="327"/>
                 </div>
@@ -159,11 +160,11 @@ class Main extends PureComponent {
 
 
 Main.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
-  video: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  genre: PropTypes.string,
+  release: PropTypes.number,
+  video: PropTypes.string,
+  poster: PropTypes.string,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -177,10 +178,10 @@ Main.propTypes = {
   onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const {activeGenre, moviesToShow} = state;
-  return {activeGenre, moviesToShow};
-};
+const mapStateToProps = (state) => ({
+  activeGenre: getActiveGenre(state),
+  moviesToShow: getMoviesToShow(state),
+});
 
 const mapDispatchToProps = (dispatch) =>({
   onGenreClick(genre) {

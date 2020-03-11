@@ -1,32 +1,29 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 import {App} from './components/app/app.jsx';
-import {reducer} from './reducer.js';
+import reducer from './reducer/reducer.js';
+import {createAPI} from './api.js';
+import {Operation as DataOperation} from './reducer/data/data.js';
 
-const PromoMovieDetails = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  RELEASE: 2014,
-  VIDEO: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  POSTER: `moonrise-kingdom.jpg`,
-};
+const api = createAPI();
 
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    compose(
+        applyMiddleware(thunk.withExtraArgument(api)),
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    )
 );
+
+store.dispatch(DataOperation.loadPromoMovie());
+store.dispatch(DataOperation.loadMovies());
 
 ReactDom.render(
     <Provider store={store}>
-      <App
-        promoTitle = {PromoMovieDetails.TITLE}
-        promoGenre = {PromoMovieDetails.GENRE}
-        promoRelease = {PromoMovieDetails.RELEASE}
-        promoVideo = {PromoMovieDetails.VIDEO}
-        promoPoster = {PromoMovieDetails.POSTER}
-      />,
+      <App />,
     </Provider>,
     document.querySelector(`#root`)
 );

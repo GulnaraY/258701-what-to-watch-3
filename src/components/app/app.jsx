@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import FilmDetails from '../film-details/film-details.jsx';
 import {connect} from 'react-redux';
+import {getMovies, getPromoMovie} from '../../reducer/data/selectors.js';
 
 class App extends PureComponent {
   constructor(props) {
@@ -28,7 +29,8 @@ class App extends PureComponent {
   _renderHomePage() {
     const {step} = this.state;
     const {movies} = this.props;
-    const {promoTitle, promoGenre, promoRelease, promoVideo, promoPoster} = this.props;
+    const {promoMovie} = this.props;
+    const {title: promoTitle, genre: promoGenre, release: promoRelease, fullScreenVideo: promoVideo, poster: promoPoster, backgroundImage: promoBG} = promoMovie;
 
     if (step === -1) {
       return (
@@ -36,17 +38,18 @@ class App extends PureComponent {
           title = {promoTitle}
           genre = {promoGenre}
           release = {promoRelease}
+          poster={promoPoster}
           movies = {movies}
           onTitleClick = {this._handleTitlePictureClick}
           video = {promoVideo}
-          poster = {promoPoster}
+          backgroundImage = {promoBG}
         />
       );
     }
 
     if (movies[step]) {
       const movie = movies[step];
-      const {title, genre, release, poster, picture, video} = movie;
+      const {title, genre, release, poster, picture, fullScreenVideo, backgroundImage} = movie;
       const {rating, ratingAmount, description, director, actors, runTime} = movie;
       const {reviews} = movie;
       return (
@@ -56,6 +59,7 @@ class App extends PureComponent {
           release={release}
           poster={poster}
           picture={picture}
+          backgroundImage={backgroundImage}
           rating={rating}
           ratingAmount={ratingAmount}
           description={description}
@@ -66,7 +70,7 @@ class App extends PureComponent {
           movies={movies}
           currentIndex={step}
           onTitleClick={this._handleTitlePictureClick}
-          video={video}
+          video={fullScreenVideo}
         />
       );
     }
@@ -76,7 +80,7 @@ class App extends PureComponent {
 
   _renderDetailsPage() {
     const {movies} = this.props;
-    const {title, genre, release, poster, picture, video} = movies[0];
+    const {title, genre, release, poster, picture, fullScreenVideo, backgroundImage} = movies[0];
     const {rating, ratingAmount, description, director, actors, runTime} = movies[0];
     const {reviews} = movies[0];
     return (
@@ -96,7 +100,8 @@ class App extends PureComponent {
         movies={movies}
         currentIndex={0}
         onTitleClick={this._handleTitlePictureClick}
-        video={video}
+        video={fullScreenVideo}
+        backgroundImage={backgroundImage}
       />
     );
   }
@@ -109,7 +114,7 @@ class App extends PureComponent {
             {this._renderHomePage()}
           </Route>
           <Route exact path="/dev-film">
-            {this._renderDetailsPage()}
+            {/* {this._renderDetailsPage()} */}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -118,11 +123,14 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoRelease: PropTypes.number.isRequired,
-  promoVideo: PropTypes.string.isRequired,
-  promoPoster: PropTypes.string.isRequired,
+  promoMovie: PropTypes.shape({
+    title: PropTypes.string,
+    poster: PropTypes.string,
+    genre: PropTypes.string,
+    release: PropTypes.number,
+    fullScreenVideo: PropTypes.string,
+    backgroundImage: PropTypes.string,
+  }),
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -136,7 +144,8 @@ App.propTypes = {
         description: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
         actors: PropTypes.arrayOf(PropTypes.string.isRequired),
-        runTime: PropTypes.string.isRequired,
+        runTime: PropTypes.number.isRequired,
+        fullScreenVideo: PropTypes.string.isRequired,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               text: PropTypes.string.isRequired,
@@ -148,10 +157,10 @@ App.propTypes = {
       })),
 };
 
-const mapStateToProps = (state) => {
-  const {movies} = state;
-  return {movies};
-};
+const mapStateToProps = (state) => ({
+  movies: getMovies(state),
+  promoMovie: getPromoMovie(state),
+});
 
 
 const connectedComponent = connect(

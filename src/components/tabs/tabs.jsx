@@ -88,7 +88,7 @@ Tabs.propTypes = {
   actors: PropTypes.arrayOf(PropTypes.string.isRequired),
   genre: PropTypes.string.isRequired,
   release: PropTypes.number.isRequired,
-  runTime: PropTypes.string.isRequired,
+  runTime: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
         text: PropTypes.string.isRequired,

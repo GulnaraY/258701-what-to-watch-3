@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs.jsx';
 import {FilmsList} from '../films-list/films-list.jsx';
@@ -28,11 +28,11 @@ class FilmDetails extends PureComponent {
   }
 
   render() {
-    const {title, genre, release, poster, picture, video} = this.props;
+    const {title, genre, release, poster, picture, backgroundImage, video} = this.props;
     const {rating, ratingAmount, description, director, actors, runTime} = this.props;
     const {movies, currentIndex, onTitleClick} = this.props;
     const {reviews} = this.props;
-    // const similarMovies = movies.filter((element) => element.genre === genre).slice(0, 4);
+
     const {isVideoPlaying} = this.state;
 
     if (!isVideoPlaying) {
@@ -41,11 +41,11 @@ class FilmDetails extends PureComponent {
           <section className="movie-card movie-card--full">
             <div className="movie-card__hero">
               <div className="movie-card__bg">
-                <img src={`img/${poster}`} alt={title} />
+                <img src={backgroundImage} alt={title} />
               </div>
-  
+
               <h1 className="visually-hidden">WTW</h1>
-  
+
               <header className="page-header movie-card__head">
                 <div className="logo">
                   <a href="main.html" className="logo__link">
@@ -94,7 +94,7 @@ class FilmDetails extends PureComponent {
             <div className="movie-card__wrap movie-card__translate-top">
               <div className="movie-card__info">
                 <div className="movie-card__poster movie-card__poster--big">
-                  <img src={`img/${picture}`} alt={title} width="218" height="327" />
+                  <img src={poster} alt={title} width="218" height="327" />
                 </div>
                 <Tabs
                   rating={rating}
@@ -166,8 +166,9 @@ FilmDetails.propTypes = {
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
   actors: PropTypes.arrayOf(PropTypes.string.isRequired),
-  runTime: PropTypes.string.isRequired,
+  runTime: PropTypes.number.isRequired,
   video: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
         text: PropTypes.string.isRequired,

@@ -55,7 +55,7 @@ class VideoPlayer extends PureComponent {
     const video = <video
       width ={width} height ={height}
       muted={this.state.isMute}
-      poster={`img/${poster}`}
+      poster={poster}
       ref={this._videoRef}
     >
       <source src = {src} type="video/mp4" />

@@ -1,14 +1,11 @@
-import {extend} from './utils.js';
-import films from './mocks/films.js';
-import {GenresMap} from './const.js';
+import {extend} from '../../utils.js';
+import {GenresMap} from '../../const.js';
 
 const ONE_RENDER_QUANTITY = 8;
 
 export const initialState = {
   activeGenre: GenresMap.ALL_GENRES,
-  movies: films,
   moviesToShow: ONE_RENDER_QUANTITY,
-  activeMovie: 0,
 };
 
 const ActionType = {
