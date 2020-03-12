@@ -13,7 +13,7 @@ Array [
       >
         <img
           alt="Summer"
-          src="img/summer.jpg"
+          src=""
         />
       </div>
       <h1
@@ -148,7 +148,7 @@ Array [
           <img
             alt="Summer"
             height="327"
-            src="img/summer.jpg"
+            src="summer.jpg"
             width="218"
           />
         </div>
@@ -283,7 +283,7 @@ Array [
               <video
                 height="175"
                 muted={true}
-                poster="img/title.jpg"
+                poster="title.jpg"
                 width="270"
               >
                 <source
@@ -316,7 +316,7 @@ Array [
               <video
                 height="175"
                 muted={true}
-                poster="img/title.jpg"
+                poster="title.jpg"
                 width="270"
               >
                 <source
@@ -349,7 +349,7 @@ Array [
               <video
                 height="175"
                 muted={true}
-                poster="img/title.jpg"
+                poster="title.jpg"
                 width="270"
               >
                 <source

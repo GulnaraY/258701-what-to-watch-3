@@ -9,8 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Friends"
       />
     </div>
     <h1
@@ -69,9 +68,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Friends"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="moonrise-kingdom.jpg"
             width="218"
           />
         </div>
@@ -195,7 +194,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Onejpg"
+              poster="Onejpg"
               width="270"
             >
               <source
@@ -228,7 +227,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Twojpg"
+              poster="Twojpg"
               width="270"
             >
               <source
@@ -261,7 +260,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Treejpg"
+              poster="Treejpg"
               width="270"
             >
               <source
@@ -294,7 +293,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Fourjpg"
+              poster="Fourjpg"
               width="270"
             >
               <source
@@ -327,7 +326,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Fivejpg"
+              poster="Fivejpg"
               width="270"
             >
               <source
@@ -360,7 +359,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Sixjpg"
+              poster="Sixjpg"
               width="270"
             >
               <source
@@ -393,7 +392,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Sevenjpg"
+              poster="Sevenjpg"
               width="270"
             >
               <source
@@ -426,7 +425,7 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/Eightjpg"
+              poster="Eightjpg"
               width="270"
             >
               <source

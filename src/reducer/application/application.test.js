@@ -1,4 +1,4 @@
-import {reducer, ActionType, initialState} from './reducer.js';
+import {reducer, ActionType, initialState} from './application.js';
 
 export const GenresMap = {
   ALL_GENRES: `All genres`,
@@ -10,7 +10,6 @@ export const GenresMap = {
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     activeGenre: GenresMap.ALL_GENRES,
-    movies: initialState.movies,
     moviesToShow: 8,
     activeMovie: 0,
   });

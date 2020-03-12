@@ -7,7 +7,7 @@ exports[`Should render FullScreenVideo 1`] = `
   <video
     height="100%"
     muted={false}
-    poster="img/moonrise-kingdom.jpg"
+    poster="moonrise-kingdom.jpg"
     width="100%"
   >
     <source

@@ -3,6 +3,7 @@ import rerender from 'react-test-renderer';
 import FilmDetails from './film-details.jsx';
 import {Provider} from 'react-redux';
 import configurationStore from 'redux-mock-store';
+import NameSpace from '../../reducer/name-space.js';
 
 const mockStore = configurationStore([]);
 
@@ -17,7 +18,7 @@ const filmDetails = {
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
-  runTime: `1h 30m`,
+  runTime: 30,
   reviews: new Array(3).fill(``).map(() => (
     {
       author: `Tim Cook`,
@@ -37,7 +38,9 @@ const similarMovies = new Array(4).fill(``).map((film, index) => ({
 
 it(`Should render FilmDetails`, () => {
   const store = mockStore({
-    activeMovie: 8,
+    [NameSpace.APPLICATION]: {
+      activeMovie: 8,
+    }
   });
   const tree = rerender
     .create(
@@ -58,6 +61,8 @@ it(`Should render FilmDetails`, () => {
             movies={similarMovies}
             onTitleClick={()=>{}}
             currentIndex={0}
+            video={``}
+            backgroundImage={``}
           />
         </Provider>, {
           createNodeMock: () => {

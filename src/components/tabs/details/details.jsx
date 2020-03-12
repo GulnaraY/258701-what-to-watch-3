@@ -41,7 +41,7 @@ Details.propTypes = {
   release: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,
   actors: PropTypes.arrayOf(PropTypes.string.isRequired),
-  runTime: PropTypes.string.isRequired,
+  runTime: PropTypes.number.isRequired,
 };
 
 export default Details;

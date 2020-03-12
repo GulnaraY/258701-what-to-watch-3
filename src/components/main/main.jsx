@@ -4,9 +4,9 @@ import {FilmsList} from '../films-list/films-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 import {connect} from 'react-redux';
-import {GenresMap} from '../../const.js';
 import FullScreenVideo from '../full-screen-video/full-screen-video.jsx';
 import {getActiveGenre, getMoviesToShow} from '../../reducer/application/selectors.js';
+import {getMoviesByGenre} from '../../reducer/data/selectors.js';
 
 class Main extends PureComponent {
   constructor(props) {
@@ -15,16 +15,6 @@ class Main extends PureComponent {
     this.state = {
       isVideoPlaying: false,
     };
-  }
-
-  _filterMovies(movies, activeGenre) {
-    let filtredMovies = movies;
-
-    if (activeGenre !== GenresMap.ALL_GENRES) {
-      filtredMovies = movies.filter((movie) => movie.genre === activeGenre);
-    }
-
-    return filtredMovies;
   }
 
   _handlePlayButtonClick() {
@@ -41,8 +31,7 @@ class Main extends PureComponent {
 
   render() {
     const {title, genre, release, movies, onTitleClick, video, poster, backgroundImage} = this.props;
-    const {onGenreClick, activeGenre, moviesToShow, onShowMoreButtonClick} = this.props;
-    const filtredMovies = this._filterMovies(movies, activeGenre);
+    const {onGenreClick, activeGenre, moviesToShow, onShowMoreButtonClick, filteredMovies} = this.props;
     const {isVideoPlaying} = this.state;
     if (!isVideoPlaying) {
       return (
@@ -118,11 +107,11 @@ class Main extends PureComponent {
               />
 
               <FilmsList
-                movies={filtredMovies}
+                movies={filteredMovies}
                 onTitleClick={onTitleClick}
                 quantity={moviesToShow}
               />
-              {filtredMovies.length > moviesToShow
+              {filteredMovies.length > moviesToShow
                 ? <ShowMoreButton
                   onShowMoreButtonClick={onShowMoreButtonClick}
                 />
@@ -165,6 +154,7 @@ Main.propTypes = {
   release: PropTypes.number,
   video: PropTypes.string,
   poster: PropTypes.string,
+  backgroundImage: PropTypes.string,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -176,11 +166,18 @@ Main.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   moviesToShow: PropTypes.number.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,
+  filteredMovies: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+      })),
 };
 
 const mapStateToProps = (state) => ({
   activeGenre: getActiveGenre(state),
   moviesToShow: getMoviesToShow(state),
+  filteredMovies: getMoviesByGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) =>({

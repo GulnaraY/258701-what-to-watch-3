@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import FilmCard from '../film-card/film-card.jsx';
 import {connect} from 'react-redux';
+import {getActiveMovie} from '../../reducer/application/selectors.js';
 
 class FilmsList extends PureComponent {
   constructor(props) {
@@ -47,10 +48,9 @@ FilmsList.propTypes = {
   activeMovie: PropTypes.number,
 };
 
-const mapStateToProps = (state) => {
-  const {activeMovie} = state;
-  return {activeMovie};
-};
+const mapStateToProps = (state) => ({
+  activeMovie: getActiveMovie(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardMouseEnter(id) {

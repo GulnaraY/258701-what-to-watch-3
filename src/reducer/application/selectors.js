@@ -7,3 +7,7 @@ export const getActiveGenre = (state) => {
 export const getMoviesToShow = (state) => {
   return state[NameSpace.APPLICATION].moviesToShow;
 };
+
+export const getActiveMovie = (state) => {
+  return state[NameSpace.APPLICATION].activeMovie;
+};

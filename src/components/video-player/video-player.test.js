@@ -13,7 +13,7 @@ it(`Should render VideoPlayer`, () => {
         isMute={true}
         pauseVideo={true}
         width={``}
-        heighth={``}
+        height={``}
         getCurrentDuration={()=>{}}
         getVideoDuration={()=>{}}
       />, {

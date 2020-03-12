@@ -13,7 +13,7 @@ exports[`Should FilmCard be rendered correctly 1`] = `
     <video
       height="175"
       muted={true}
-      poster="img/summer.jpg"
+      poster="summer.jpg"
       width="270"
     >
       <source

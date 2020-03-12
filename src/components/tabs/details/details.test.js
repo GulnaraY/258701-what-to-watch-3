@@ -7,7 +7,7 @@ const filmDetails = {
   release: 1999,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
-  runTime: `1h 30m`,
+  runTime: 10,
 };
 
 it(`Should render Details`, () => {

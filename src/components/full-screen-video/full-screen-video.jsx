@@ -69,7 +69,7 @@ class FullScreenVideo extends PureComponent {
             </div>
             <div className="player__time-value">{lessDuration}</div>
           </div>
-  
+
           <div className="player__controls-row">
             <button
               onClick={() => this._handlePlayButtonClick()}

@@ -13,7 +13,7 @@ const filmDetails = {
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
-  runTime: `1h 30m`,
+  runTime: 10,
   reviews: new Array(3).fill(``).map(() => (
     {
       author: `Tim Cook`,

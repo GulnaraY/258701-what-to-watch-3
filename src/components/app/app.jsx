@@ -67,7 +67,7 @@ class App extends PureComponent {
           actors={actors}
           runTime={runTime}
           reviews={reviews}
-          movies={movies}
+          movies={movies.filter((it) => it.genre === genre)}
           currentIndex={step}
           onTitleClick={this._handleTitlePictureClick}
           video={fullScreenVideo}
@@ -146,6 +146,7 @@ App.propTypes = {
         actors: PropTypes.arrayOf(PropTypes.string.isRequired),
         runTime: PropTypes.number.isRequired,
         fullScreenVideo: PropTypes.string.isRequired,
+        backgroundImage: PropTypes.string.isRequired,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               text: PropTypes.string.isRequired,

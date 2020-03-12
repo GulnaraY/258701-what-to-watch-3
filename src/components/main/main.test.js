@@ -3,6 +3,7 @@ import rerender from 'react-test-renderer';
 import {Main} from './main.jsx';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
+import NameSpace from '../../reducer/name-space.js';
 
 const mockStore = configureStore([]);
 
@@ -25,10 +26,14 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
 
 it(`render Main`, () => {
   const store = mockStore({
-    movies: moviesList,
-    activeGenre: `All genres`,
-    moviesToShow: 8,
-    activeMovie: 0,
+    [NameSpace.APPLICATION]: {
+      activeGenre: `All genres`,
+      moviesToShow: 8,
+      activeMovie: 0,
+    },
+    [NameSpace.DATA]: {
+      movies: moviesList,
+    }
   });
   const tree = rerender
     .create(
@@ -45,7 +50,7 @@ it(`render Main`, () => {
             activeGenre={`All genres`}
             moviesToShow={8}
             onShowMoreButtonClick={()=>{}}
-            activeMovie={store.activeMovie}
+            activeMovie={0}
           />
         </Provider>
         , {

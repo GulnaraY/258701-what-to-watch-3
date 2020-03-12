@@ -21,7 +21,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Onejpg"
+        poster="Onejpg"
         width="270"
       >
         <source
@@ -54,7 +54,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Twojpg"
+        poster="Twojpg"
         width="270"
       >
         <source
@@ -87,7 +87,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Treejpg"
+        poster="Treejpg"
         width="270"
       >
         <source
@@ -120,7 +120,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Fourjpg"
+        poster="Fourjpg"
         width="270"
       >
         <source
@@ -153,7 +153,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Fivejpg"
+        poster="Fivejpg"
         width="270"
       >
         <source
@@ -186,7 +186,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Sixjpg"
+        poster="Sixjpg"
         width="270"
       >
         <source
@@ -219,7 +219,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Sevenjpg"
+        poster="Sevenjpg"
         width="270"
       >
         <source
@@ -252,7 +252,7 @@ exports[`Should films list be rendered 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/Eightjpg"
+        poster="Eightjpg"
         width="270"
       >
         <source

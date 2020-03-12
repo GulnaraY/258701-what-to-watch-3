@@ -2,8 +2,9 @@
 
 exports[`Should render VideoPlayer 1`] = `
 <video
+  height=""
   muted={true}
-  poster="img/poster"
+  poster="poster"
   width=""
 >
   <source

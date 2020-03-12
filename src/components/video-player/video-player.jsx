@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 
 class VideoPlayer extends PureComponent {
   constructor(props) {

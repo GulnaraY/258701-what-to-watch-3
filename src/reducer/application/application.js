@@ -6,6 +6,7 @@ const ONE_RENDER_QUANTITY = 8;
 export const initialState = {
   activeGenre: GenresMap.ALL_GENRES,
   moviesToShow: ONE_RENDER_QUANTITY,
+  activeMovie: 0,
 };
 
 const ActionType = {

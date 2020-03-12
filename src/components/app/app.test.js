@@ -3,15 +3,16 @@ import rerender from 'react-test-renderer';
 import {App} from './app.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import NameSpace from '../../reducer/name-space.js';
 
 const mockStore = configureStore([]);
 
-const PromoMovieDetails = {
-  TITLE: `Friends`,
-  GENRE: `Comedy`,
-  RELEASE: 2004,
-  VIDEO: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  POSTER: `moonrise-kingdom.jpg`,
+const promoMovie = {
+  title: `Friends`,
+  genre: `Comedy`,
+  release: 2004,
+  video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  poster: `moonrise-kingdom.jpg`,
 };
 
 const titles = [`One`, `Two`, `Tree`, `Four`, `Five`, `Six`, `Seven`, `Eight`];
@@ -28,8 +29,10 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
   description: `One day in sumemer`,
   director: `Tim Cook`,
   actors: [`actress`, `actor`],
-  runTime: `1h 30m`,
+  runTime: 10,
   video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  fullScreenVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  backgroundImage: ``,
   reviews: new Array(3).fill(``).map(() => (
     {
       author: `Tim Cook`,
@@ -42,23 +45,26 @@ const moviesList = new Array(8).fill(``).map((film, index) => ({
 
 it(`render App`, () => {
   const store = mockStore({
-    movies: moviesList,
-    activeGenre: `All genres`,
-    moviesToShow: 8,
-    activeMovie: 0,
+    [NameSpace.DATA]: {
+      movies: moviesList,
+      promoMovie: {},
+    },
+    [NameSpace.APPLICATION]: {
+      activeMovie: 0,
+      activeGenre: `All genres`,
+    }
   });
+
   const tree = rerender
     .create(
         <Provider store={store}>
           <App
-            promoTitle={PromoMovieDetails.TITLE}
-            promoGenre={PromoMovieDetails.GENRE}
-            promoRelease={PromoMovieDetails.RELEASE}
-            promoVideo={PromoMovieDetails.VIDEO}
-            promoPoster={PromoMovieDetails.POSTER}
+            promoMovie={{}}
             onTabsLinkClick={()=>{}}
-            moviesToShow={mockStore.moviesToShow}
+            moviesToShow={8}
             activeMovie={store.activeMovie}
+            quantity={8}
+            movies={moviesList}
           />
         </Provider>
         , {

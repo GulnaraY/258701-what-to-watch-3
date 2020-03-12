@@ -9,7 +9,7 @@ const SIMILAR_ITEMS_QUANTITY = 4;
 class FilmDetails extends PureComponent {
   constructor(props) {
     super(props);
-     
+
     this.state = {
       isVideoPlaying: false,
     };
@@ -54,14 +54,14 @@ class FilmDetails extends PureComponent {
                     <span className="logo__letter logo__letter--3">W</span>
                   </a>
                 </div>
-  
+
                 <div className="user-block">
                   <div className="user-block__avatar">
                     <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
                   </div>
                 </div>
               </header>
-  
+
               <div className="movie-card__wrap">
                 <div className="movie-card__desc">
                   <h2 className="movie-card__title">{title}</h2>
@@ -69,7 +69,7 @@ class FilmDetails extends PureComponent {
                     <span className="movie-card__genre">{genre}</span>
                     <span className="movie-card__year">{release}</span>
                   </p>
-  
+
                   <div className="movie-card__buttons">
                     <button className="btn btn--play movie-card__button" type="button"
                       onClick={()=> this._handlePlayButtonClick()}
@@ -90,7 +90,7 @@ class FilmDetails extends PureComponent {
                 </div>
               </div>
             </div>
-  
+
             <div className="movie-card__wrap movie-card__translate-top">
               <div className="movie-card__info">
                 <div className="movie-card__poster movie-card__poster--big">
@@ -111,11 +111,11 @@ class FilmDetails extends PureComponent {
               </div>
             </div>
           </section>
-  
+
           <div className="page-content">
             <section className="catalog catalog--like-this">
               <h2 className="catalog__title">More like this</h2>
-  
+
               <div className="catalog__movies-list">
                 <FilmsList
                   movies={movies.slice(0, currentIndex).concat(movies.slice(currentIndex + 1, movies.length))}
@@ -125,7 +125,7 @@ class FilmDetails extends PureComponent {
                 />
               </div>
             </section>
-  
+
             <footer className="page-footer">
               <div className="logo">
                 <a href="main.html" className="logo__link logo__link--light">
@@ -134,7 +134,7 @@ class FilmDetails extends PureComponent {
                   <span className="logo__letter logo__letter--3">W</span>
                 </a>
               </div>
-  
+
               <div className="copyright">
                 <p>© 2019 What to watch Ltd.</p>
               </div>

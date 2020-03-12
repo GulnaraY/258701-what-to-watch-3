@@ -3,6 +3,7 @@ import rerender from 'react-test-renderer';
 import {FilmsList} from './films-list.jsx';
 import {Provider} from 'react-redux';
 import configurationStore from 'redux-mock-store';
+import NameSpace from '../../reducer/name-space.js';
 
 const mockStore = configurationStore([]);
 
@@ -19,7 +20,9 @@ const activeGenre = `All genres`;
 
 it(`Should films list be rendered`, () => {
   const store = mockStore({
-    activeMovie: 8,
+    [NameSpace.APPLICATION]: {
+      activeMovie: 8,
+    }
   });
   const tree = rerender
   .create(
