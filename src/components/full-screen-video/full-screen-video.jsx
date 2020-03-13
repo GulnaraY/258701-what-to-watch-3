@@ -10,11 +10,10 @@ class FullScreenVideo extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._wholeDuration = null;
-
     this.state = {
       isVideoPlaying: true,
       progress: null,
+      duration: 0.1,
     };
   }
 
@@ -25,7 +24,9 @@ class FullScreenVideo extends PureComponent {
   }
 
   _getVideoDuration(wholeDuration) {
-    this._wholeDuration = wholeDuration;
+    this.setState({
+      duration: wholeDuration,
+    });
   }
 
   _getCurrentDuration(currentDuration) {
@@ -40,8 +41,8 @@ class FullScreenVideo extends PureComponent {
   render() {
     const {isVideoPlaying} = this.state;
     const {onVideoExit, title, video, poster} = this.props;
-    const lessDuration = this._wholeDuration - this.state.progress;
-    const progressBar = this.state.progress * 100 / this._wholeDuration;
+    const lessDuration = this.state.duration - this.state.progress;
+    const progressBar = this.state.progress * 100 / this.state.duration;
     return (
       <div className="player">
         <VideoPlayer
