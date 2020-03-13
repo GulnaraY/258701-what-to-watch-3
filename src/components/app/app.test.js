@@ -7,13 +7,13 @@ import NameSpace from '../../reducer/name-space.js';
 
 const mockStore = configureStore([]);
 
-const promoMovie = {
-  title: `Friends`,
-  genre: `Comedy`,
-  release: 2004,
-  video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  poster: `moonrise-kingdom.jpg`,
-};
+// const promoMovie = {
+//   title: `Friends`,
+//   genre: `Comedy`,
+//   release: 2004,
+//   video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+//   poster: `moonrise-kingdom.jpg`,
+// };
 
 const titles = [`One`, `Two`, `Tree`, `Four`, `Five`, `Six`, `Seven`, `Eight`];
 
@@ -52,6 +52,7 @@ it(`render App`, () => {
     [NameSpace.APPLICATION]: {
       activeMovie: 0,
       activeGenre: `All genres`,
+      moviesToShow: 8,
     }
   });
 
