@@ -76,8 +76,27 @@ describe(`Operation work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_MOVIES,
-          payload: [{fake: true}],
+          payload: [{
+            "actors": undefined,
+            "backgroundColor": undefined,
+            "backgroundImage": undefined,
+            "description": undefined,
+            "director": undefined,
+            "fullScreenVideo": undefined,
+            "genre": undefined,
+            "id": undefined,
+            "isFavorite": undefined,
+            "picture": undefined,
+            "poster": undefined,
+            "rating": undefined,
+            "ratingAmount": undefined,
+            "release": undefined,
+            "reviews": [],
+            "runTime": undefined,
+            "title": undefined,
+            "video": undefined}],
         });
       });
   });
 });
+
